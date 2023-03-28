@@ -9,8 +9,6 @@ class CreateExperiences < ActiveRecord::Migration[7.0]
       t.date :end_date
       t.integer :industry
       t.text :description
-      t.string :media_links
-
       t.timestamps
     end
   end
