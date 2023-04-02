@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_29_041713) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_02_043535) do
   create_table "companies", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -57,6 +57,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_29_041713) do
     t.integer "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "location_mode"
     t.index ["company_id"], name: "index_jobs_on_company_id"
   end
 

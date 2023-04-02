@@ -6,6 +6,7 @@ class CreateJobs < ActiveRecord::Migration[7.0]
       t.string :website
       t.belongs_to :company, index: true, foreign_key: true
       t.string :location
+      t.location_mode :integer
       t.date :date
       t.integer :salary
       t.integer :category
