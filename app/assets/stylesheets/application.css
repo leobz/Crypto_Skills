@@ -19,19 +19,33 @@ body {
 }
 
 
-/************************************** Navbar  ***********************************/
+/************************************** Main Navbar  ***********************************/
 .navbar{
     background-color: #0A1C2E;
+    height: 4em;
+}
+
+.container-fluid.main-navbar{
+    margin-bottom: 50%;
+    margin-left: 2%;
 }
 
 .navbar-brand{
-    color: white !important;
+    color: #E5E5E5 !important;
+}
+
+#crypto-jobs {
+    font-family: 'Karantina';
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#crypto-jobs::first-letter {
+    font-size: 120%;
 }
 
 .icons-container{
-    display: flex;
     justify-content: flex-end;
-    width: 20%;
 }
 
 
@@ -43,16 +57,32 @@ body {
     top: 90px;
 }
 
+.form-control.search{
+    margin-left: 2%;
+    margin-right: 4%;
+    height: 3em;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/3917/3917754.png');
+    background-position: right center;
+    background-size: 20px 22px;
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+}
+
+.sort-by{
+    margin-left: 2%;
+}
 
 .navbar-filtros{
+    border-radius: 0px 0px 15px 15px;
     background: #0A1C2E;
-    height: 80px;
-    top: 90px;
+    height: 65px;
+    margin-bottom: 5px;
 }
 
 .dropdown-toggle{
     background: #FFFFFF;
     border-radius: 10px;
+    height: 2em;
 
     font-family: 'Inter';
     font-style: normal;
@@ -69,7 +99,7 @@ body {
 .card{
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
-    transform: scale(0.99);
+    transform: scale(0.96);
 }
 
 .card-link{
