@@ -46,14 +46,14 @@
               <!-------------- Title  ---------------->
               <h5 class="card-title"><%= job.title %></h5>
               <!-------------- Subtitle  ---------------->
-              <h6 class="card-subtitle mb-2 text-body-secondary"><%= job.company.name %></h6>
+              <h6 class="card-subtitle mb-2 text-body-secondary"><%= job.company %></h6>
 
               <!-------------- Secondary  ---------------->
               <p class="card-text" style="line-height: 1;">
                 <small class="text-body-secondary"> <%= job.location %> <br class="small"> <%= job.location_mode %> </small>
               </p>
               <span class="card-text" style="float: left;">
-                <small class="text-body-secondary"><%= job.date %></small>
+                <small class="text-body-secondary"><%= job.created_at %></small>
               </span>
               <span class="card-text" style="float: right;">
                 <small class="text-body-secondary"> $<%= job.salary %></small>

@@ -27,9 +27,22 @@
   </div>
 
   <div>
-    <%= form.label :company_id, style: "display: block" %>
-    <%= form.collection_select :company_id, Company.all, :id, :name %>
+    <%= form.label :company, style: "display: block" %>
+    <%= form.text_field :company %>
   </div>
+
+  <div>
+    <%= form.label :company_logo, style: "display: block" %>
+    <%= form.file_field :company_logo %>
+  </div>
+
+ <!-- 
+  # Note: Use the following if you use the companies table
+  # <div>
+  #   <%= form.label :company_id, style: "display: block" %>
+  #   <%= form.collection_select :company_id, Company.all, :id, :name %>
+  # </div>
+  -->
 
   <div>
     <%= form.label :location, style: "display: block" %>
@@ -39,11 +52,6 @@
   <div>
     <%= form.label :location_mode, style: "display: block" %>
     <%= form.select :location_mode, Job.location_modes.keys %>
-  </div>
-
-  <div>
-    <%= form.label :date, style: "display: block" %>
-    <%= form.date_field :date %>
   </div>
 
   <div>

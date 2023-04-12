@@ -15,8 +15,7 @@ class JobsTest < ApplicationSystemTestCase
     click_on "New job"
 
     fill_in "Category", with: @job.category
-    fill_in "Company", with: @job.company_id
-    fill_in "Date", with: @job.date
+    fill_in "Company", with: @job.company
     fill_in "Description", with: @job.description
     fill_in "Location", with: @job.location
     fill_in "Salary", with: @job.salary
@@ -33,8 +32,7 @@ class JobsTest < ApplicationSystemTestCase
     click_on "Edit this job", match: :first
 
     fill_in "Category", with: @job.category
-    fill_in "Company", with: @job.company_id
-    fill_in "Date", with: @job.date
+    fill_in "Company", with: @job.company
     fill_in "Description", with: @job.description
     fill_in "Location", with: @job.location
     fill_in "Salary", with: @job.salary

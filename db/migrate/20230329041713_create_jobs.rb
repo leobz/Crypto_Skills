@@ -4,10 +4,12 @@ class CreateJobs < ActiveRecord::Migration[7.0]
       t.string :title
       t.string :description
       t.string :website
-      t.belongs_to :company, index: true, foreign_key: true
+      # Note: In case of use the company table, use the following code:
+      # t.belongs_to :company, index: true, foreign_key: true
+      t.string :company
+      t.binary :company_logo
       t.string :location
-      t.location_mode :integer
-      t.date :date
+      t.integer :location_mode
       t.integer :salary
       t.integer :category
 
