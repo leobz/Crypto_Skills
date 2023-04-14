@@ -16,6 +16,7 @@
 
 body {
     background: #E5E5E5 !important;
+    padding-bottom: 50px;
 }
 
 
@@ -47,7 +48,6 @@ body {
 .icons-container{
     justify-content: flex-end;
 }
-
 
 /************************************** Jobs Index  ***********************************/
 
@@ -112,4 +112,29 @@ body {
     width: 10px;
     height: 10px;
     top: 50%;
+}
+
+.card-body{
+     border-radius: 0px;
+}
+
+
+
+/******************************Jobs Show**************************************/
+
+
+.white {
+    background-color: #FFFFFF;
+}
+
+.apply-buttom{
+    width: 250px ;
+    box-sizing: border-box !important;
+    background-color: #0A1C2E !important;
+    font-family: 'Inter' !important;
+    font-size: 24px !important;
+    font-weight: bold !important;
+    border-radius: 20px !important;
+    box-shadow: none !important;
+    border: #0A1C2E !important;
 }
