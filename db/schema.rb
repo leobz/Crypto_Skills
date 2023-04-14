@@ -52,12 +52,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_043535) do
     t.string "website"
     t.integer "company_id"
     t.string "location"
+    t.integer "location_mode"
     t.date "date"
     t.integer "salary"
     t.integer "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "location_mode"
     t.index ["company_id"], name: "index_jobs_on_company_id"
   end
 
