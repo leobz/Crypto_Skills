@@ -1,10 +1,38 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @job %>
-
-<div>
   <%= link_to "Edit this job", edit_job_path(@job) %> |
   <%= link_to "Back to jobs", jobs_path %>
-
   <%= button_to "Destroy this job", @job, method: :delete %>
+<div class="card">
+  <div class="card-body">
+    <h2 class="card-title"><%= @job.title %>
+      <a href="/jobs">
+          <%= image_tag "icons/Vector.png", style: "width: 24.5px; height: 24.5px;"%>
+      </a>
+    </h2>
+      <p class="card-text" style="line-height: 1;">
+                <small class="text-body-secondary"> <%= @job.company%> - <%= @job.location %> - <%= @job.location_mode %> </small>
+      </p>
+      <span class="card-text" style="float: left; ">
+          <small class="text-body-secondary"><%= @job.created_at %></small>
+      </span>
+      <span class="card-text" style="float: right;">
+           <small class="text-body-secondary"> $<%= @job.salary %></small>
+      </span>
+    <br>
+    <br>
+    <br>
+    <h5 class="card-title"> Job Description</h5>
+    <p class="card-text"><%= @job.description %>
+    </p>
+  </div>
+</div>
+<!-- buttom apply -->
+<div class="container-fluid fixed-bottom white">
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center align-items-center" style="height: 10vh;">
+      <a  href="#" class="btn btn-primary apply-buttom">Apply
+      </a>
+    </div>
+  </div>
 </div>
