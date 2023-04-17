@@ -1,8 +1,16 @@
-<h1>New job</h1>
+<!------------------------------------ Card  --------------------------------------->
+<div class="card">
+  <div class="row g-0 align-items-center">
+    <!--------------------------  Body  -------------------------->
+      <div class="card-body">
+        <!-------------- Title  ---------------->
+        <h2 class="card-title">New job</h2>
+        <!-------------- Form  ---------------->
+        <%= render "form", job: @job %>
 
-<%= render "form", job: @job %>
-
-<br>
+      </div>
+  </div>
+</div>
 
 <div>
   <%= link_to "Back to jobs", jobs_path %>

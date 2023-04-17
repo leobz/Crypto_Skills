@@ -17,7 +17,7 @@ module JobsHelper
 
                 # Subtitle
                 content_tag(:h6, class: 'card-subtitle mb-2 text-body-secondary') do
-                  job.company.name
+                  job.company
                 end +
 
                 # Location
@@ -29,7 +29,7 @@ module JobsHelper
 
                 # Date and Salary
                 content_tag(:span, class: 'card-text', style: 'float: left;') do
-                  content_tag(:small, job.date, class: 'text-body-secondary')
+                  content_tag(:small, job.created_at, class: 'text-body-secondary')
                 end +
                 content_tag(:span, class: 'card-text', style: 'float: right;') do
                   content_tag(:small, "$#{job.salary}", class: 'text-body-secondary')

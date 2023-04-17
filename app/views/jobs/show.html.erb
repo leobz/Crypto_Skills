@@ -11,10 +11,10 @@
       </a>
     </h2>
       <p class="card-text" style="line-height: 1;">
-                <small class="text-body-secondary"> <%= @job.company.name%> - <%= @job.location %> - <%= @job.location_mode %> </small>
+                <small class="text-body-secondary"> <%= @job.company%> - <%= @job.location %> - <%= @job.location_mode %> </small>
       </p>
       <span class="card-text" style="float: left; ">
-          <small class="text-body-secondary"><%= @job.date %></small>
+          <small class="text-body-secondary"><%= @job.created_at %></small>
       </span>
       <span class="card-text" style="float: right;">
            <small class="text-body-secondary"> $<%= @job.salary %></small>
@@ -23,7 +23,7 @@
     <br>
     <br>
     <h5 class="card-title"> Job Description</h5>
-    <p class="card-text"><%= @job.description %>
+    <p class="card-text"><%= raw @job.description %>
     </p>
   </div>
 </div>
