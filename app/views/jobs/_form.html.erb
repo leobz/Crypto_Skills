@@ -1,3 +1,7 @@
+<!-- Arreglar que el buttom aplly sea fijo en la pantalla
+     agregar flechita en la opcion de elegir modality
+-->
+
 <%= form_with(model: job) do |form| %>
   <% if job.errors.any? %>
     <div style="color: red">
@@ -11,50 +15,66 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :company_name, style: "display: block" %>
-    <%= form.text_field :company %>
+  <div class="mx-auto w-85 text-center">
+    <%= form.label :company_name, class: "d-block tittle-position fuente-letras";%>
+    <%= form.text_field :company, class: "form-control rounded border-dark" %>
   </div>
 
   <div>
-    <%= form.label :company_logo, style: "display: block" %>
-    <%= form.file_field :company_logo %>
+    <%= form.label :company_logo, class: "d.d-block fuente-letras" %>
+    <%= form.file_field :company_logo, class: "fuente-letras" %>
+  </div>
+
+  <div class="mx-auto w-85 text-center">
+    <%= form.label :location, class: "d-block tittle-position fuente-letras" %>
+    <%= form.text_field :location, class: "form-control rounded border-dark" %>
+  </div>
+
+  <div class="mx-auto w-85 text-center">
+    <%= form.label :modality, class: "d-block tittle-position fuente-letras" %>
+    <%= form.select :location_mode, Job.location_modes.keys, {}, { class: "form-control rounden w-100 border-dark text-center" } %>
+  </div>
+
+  <div class="mx-auto w-85 text-center">
+    <%= form.label :estimate_salary, class: "d-block tittle-position fuente-letras" %>
+    <%= form.number_field :salary, class: "form-control rounded border-dark" %>
+  </div>
+
+  <div class="mx-auto w-85 text-center">
+    <%= form.label :title, class: "d-block tittle-position fuente-letras" %>
+    <%= form.text_field :title, class: "form-control rounded border-dark" %>
   </div>
 
   <div>
-    <%= form.label :location, style: "display: block" %>
-    <%= form.text_field :location %>
+    <%= form.label :description, class:"d-block fuente-letras" %>
+    <%= form.text_area :description, class: "field field-big" %>
   </div>
 
-  <div>
-    <%= form.label :modality, style: "display: block" %>
-    <%= form.select :location_mode, Job.location_modes.keys %>
-  </div>
-
-  <div>
-    <%= form.label :estimate_salary, style: "display: block" %>
-    <%= form.number_field :salary %>
-  </div>
-
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div>
-    <%= form.label :job_website, style: "display: block" %>
-    <%= form.text_field :website %>
+  <div class="mx-auto w-85 text-center">
+    <%= form.label :job_website, class: "d-block tittle-position fuente-letras" %>
+    <%= form.text_field :website, class: "form-control rounded border-dark" %>
     <p><small>
     Applicants will be sent to the website you specify to apply for the position.
     </small></p>
   </div>
 
- <!--
+<!-- buttom apply  (Este no se porque si o si lo tengo que invocar con un punto entre container-fluid y fixed buttom) --> 
+<div class="container-fluid.fixed-bottom white">
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center align-items-center" style="height: 10vh;">
+      <%= 
+        if edit == true
+          form.submit "Update", class: "btn btn-primary apply-buttom"
+        else
+          form.submit "Apply" , class: "btn btn-primary apply-buttom"
+        end
+      %>
+    </div>
+  </div>
+</div>
+
+
+<!--
   # Note: Use the following if you use the companies table
   # <div>
   #   <%= form.label :company_id, style: "display: block" %>
@@ -68,7 +88,7 @@
   # </div>
   -->
 
-  <div>
-    <%= form.submit %>
-  </div>
 <% end %>
+
+  
+
