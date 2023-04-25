@@ -1,3 +1,7 @@
+<div>
+  <%= link_to "Back to jobs", jobs_path %>
+</div>
+
 <!------------------------------------ Card  --------------------------------------->
 <div class="card">
   <div class="row g-0 align-items-center">
@@ -6,12 +10,9 @@
         <!-------------- Title  ---------------->
         <h2 class="card-title">New job</h2>
         <!-------------- Form  ---------------->
-        <%= render "form", job: @job %>
+        <%= render "form", job: @job, edit: false %>
 
       </div>
   </div>
 </div>
 
-<div>
-  <%= link_to "Back to jobs", jobs_path %>
-</div>

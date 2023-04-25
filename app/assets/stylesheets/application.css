@@ -138,3 +138,23 @@ body {
     box-shadow: none !important;
     border: #0A1C2E !important;
 }
+
+
+/*************************Form**********************************/
+
+.field-big {
+  height: 350px; /* Altura mínima del campo de texto */
+  width: 350px;
+}
+
+.tittle-position{
+    width: 100%;
+    margin-right: 1rem;
+    text-align: left
+}
+
+.fuente-letras {
+    font-family: 'IBM Plex Serif';
+    font-size: 16px;
+    font-weight: Regular;
+}
