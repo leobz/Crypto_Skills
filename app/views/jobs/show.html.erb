@@ -7,6 +7,9 @@
 <!---------------------------------------------------- Card -------------------------------------------------->
 <div class="card">
   <div class="card-body">
+
+  <!--TODO: Add publish success notification(request must include "success=true" query param)----------------->
+
   <!------------------------------------ Payment Requeriment Notification ------------------------------------>
 
     <% if @job.published == false %>
@@ -17,14 +20,16 @@
         Remember that you can  <%= link_to "edit this job", edit_job_path(@job) %>  before publishing it.
         <hr>
         <!---------------------------------------- Publish Form ---------------------------------------------->
-        <%= form_tag payments_create_path, method: :post do %>
+        <%= form_tag invoices_create_path, method: :post do %>
           <div class="mx-auto w-85 text-center">
             <%= label_tag :email, "Invoice Email *", class: "d-block tittle-position fuente-letras" %>
             <%= text_field_tag :email, nil, class: "form-control rounded border-dark" , required: true %>
           </div>
 
           <%= hidden_field_tag :job_id, @job.id %>
-            <div class="row">
+          <%= hidden_field_tag :company, @job.company %>
+
+          <div class="row">
               <div class="col-12 d-flex justify-content-center align-items-center" style="height: 10vh;">
                 <%= submit_tag "Publish Job", data: {turbo: "false"}, class: "btn btn-primary apply-buttom" %>
               </div>
