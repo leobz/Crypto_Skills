@@ -1,12 +1,7 @@
-<!-- Arreglar que el buttom aplly sea fijo en la pantalla
-     agregar flechita en la opcion de elegir modality
--->
-
 <%= form_with(model: job) do |form| %>
   <% if job.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(job.errors.count, "error") %> prohibited this job from being saved:</h2>
-
       <ul>
         <% job.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -21,7 +16,7 @@
   </div>
 
   <div>
-    <%= form.label :company_logo, class: "d.d-block fuente-letras" %>
+    <%= form.label :company_logo, class: "d.d-block tittle-position fuente-letras" %>
     <%= form.file_field :company_logo, class: "fuente-letras" %>
   </div>
 
@@ -53,40 +48,25 @@
   <div class="mx-auto w-85 text-center">
     <%= form.label :job_website, class: "d-block tittle-position fuente-letras" %>
     <%= form.text_field :website, class: "form-control rounded border-dark" %>
-    <p><small>
-    Applicants will be sent to the website you specify to apply for the position.
-    </small></p>
   </div>
+  <p><small>
+    Applicants will be sent to the website you specify to apply for the position.
+  </small></p>
 
-<!-- buttom apply  (Este no se porque si o si lo tengo que invocar con un punto entre container-fluid y fixed buttom) --> 
-<div class="container-fluid.fixed-bottom white">
-  <div class="row">
-    <div class="col-12 d-flex justify-content-center align-items-center" style="height: 10vh;">
-      <%= 
-        if edit == true
-          form.submit "Update", class: "btn btn-primary apply-buttom"
-        else
-          form.submit "Apply" , class: "btn btn-primary apply-buttom"
-        end
-      %>
+<!----------------------------------------- Form submit buttom ------------------------------------------->
+  <div class="container-fluid.fixed-bottom white">
+    <div class="row">
+      <div class="col-12 d-flex justify-content-center align-items-center" style="height: 10vh;">
+        <%=
+          if edit == true
+            form.submit "Update", class: "btn btn-primary apply-buttom"
+          else
+            form.submit "Continue" , class: "btn btn-primary apply-buttom"
+          end
+        %>
+      </div>
     </div>
   </div>
-</div>
-
-
-<!--
-  # Note: Use the following if you use the companies table
-  # <div>
-  #   <%= form.label :company_id, style: "display: block" %>
-  #   <%= form.collection_select :company_id, Company.all, :id, :name %>
-  # </div>
-  #
-  #
-  # <div>
-  #   <%= form.label :category, style: "display: block" %>
-  #   <%= form.number_field :category %>
-  # </div>
-  -->
 
 <% end %>
 
