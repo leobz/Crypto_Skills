@@ -3,36 +3,65 @@
   <%= link_to "Edit this job", edit_job_path(@job) %> |
   <%= link_to "Back to jobs", jobs_path %>
   <%= button_to "Destroy this job", @job, method: :delete %>
+
+<!---------------------------------------------------- Card -------------------------------------------------->
 <div class="card">
   <div class="card-body">
+  <!------------------------------------ Payment Requeriment Notification ------------------------------------>
+
+    <% if @job.published == false %>
+      <div class="alert alert-warning" role="alert">
+        <h4 class="alert-heading">Hi there!</h4>
+        This <span class="price">job has not been published yet</span>. You can post it for <span class="price">$5 USD</span> using BTC or Lightning with the following link.
+        <br>
+        Remember that you can  <%= link_to "edit this job", edit_job_path(@job) %>  before publishing it.
+        <hr>
+        <!---------------------------------------- Publish Form ---------------------------------------------->
+        <%= form_tag payments_create_path, method: :post do %>
+          <div class="mx-auto w-85 text-center">
+            <%= label_tag :email, "Invoice Email *", class: "d-block tittle-position fuente-letras" %>
+            <%= text_field_tag :email, nil, class: "form-control rounded border-dark" , required: true %>
+          </div>
+
+          <%= hidden_field_tag :job_id, @job.id %>
+            <div class="row">
+              <div class="col-12 d-flex justify-content-center align-items-center" style="height: 10vh;">
+                <%= submit_tag "Publish Job", data: {turbo: "false"}, class: "btn btn-primary apply-buttom" %>
+              </div>
+            </div>
+        <% end %>
+      </div>
+    <% end %>
+
+  <!------------------------------------ Job Description ------------------------------------------------------>
+
     <h2 class="card-title"><%= @job.title %>
       <a href="/jobs">
-          <%= image_tag "icons/Vector.png", style: "width: 24.5px; height: 24.5px;"%>
+        <%= image_tag "icons/Vector.png", style: "width: 24.5px; height: 24.5px;"%>
       </a>
     </h2>
       <p class="card-text" style="line-height: 1;">
-                <small class="text-body-secondary"> <%= @job.company%> - <%= @job.location %> - <%= @job.location_mode %> </small>
+        <small class="text-body-secondary"> <%= @job.company%> - <%= @job.location %> - <%= @job.location_mode %> </small>
       </p>
       <span class="card-text" style="float: left; ">
-          <small class="text-body-secondary"><%= @job.created_at %></small>
+        <small class="text-body-secondary"><%= @job.created_at %></small>
       </span>
       <span class="card-text" style="float: right;">
-           <small class="text-body-secondary"> $<%= @job.salary %></small>
+        <small class="text-body-secondary"> $<%= @job.salary %></small>
       </span>
-    <br>
-    <br>
-    <br>
+    <br><br><br>
     <h5 class="card-title"> Job Description</h5>
     <p class="card-text"><%= raw @job.description %>
     </p>
   </div>
 </div>
-<!-- buttom apply -->
+
+<!------------------------------------------ Apply Buttom ------------------------------------------------------->
+
 <div class="container-fluid fixed-bottom white">
   <div class="row">
     <div class="col-12 d-flex justify-content-center align-items-center" style="height: 10vh;">
-      <a  href="#" class="btn btn-primary apply-buttom">Apply
-      </a>
+      <a href="<%=@job.website%>" class="btn btn-primary apply-buttom">Apply</a>
     </div>
   </div>
 </div>
