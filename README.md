@@ -1,24 +1,54 @@
-# README
+# Job Board
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Job Board is a platform for posting job openings and processing payments using Bitcoin or the Lightning Network.
 
-Things you may want to cover:
+## Description
 
-* Ruby version
+Job Board allows employers to post job openings and job seekers to find and apply for relevant jobs. It includes a payment gateway that enables employers to pay for job postings using Bitcoin or the Lightning Network. This provides a simple, fast, and secure way to process payments and ensures that job postings are visible to a large audience.
 
-* System dependencies
+## Getting Started
 
-* Configuration
+To get started with Job Board, follow these steps:
 
-* Database creation
+1. Clone the repository to your local machine.
+2. Install the required dependencies by running the following command:
 
-* Database initialization
+```bash
+bundle install
+```
+1. Set up the environment variables by creating a `config/local_env.yml` file with the following fields:
 
-* How to run the test suite
+```yml
+API_KEY: "your_api_key"
+OPEN_NODE_URL: "https://api.opennode.com/v1/charges"
+MY_HOST: "deploy_domain_who_is_going_to_be_requested_by_the_webhook"
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+You can obtain an API key by signing up for an account on OpenNode.
 
-* Deployment instructions
+4. Start the server by running the following command:
 
-* ...
+```bash
+rails server
+```
+
+This will start the Job Board application on http://localhost:3000.
+
+## Running Tests
+
+To run the tests for Job Board, run the following command:
+
+```bash
+rake test
+```
+
+## Dependencies
+
+Job Board requires the following dependencies:
+
+- Ruby
+- Rails
+- Bundle
+- OpenNode API
+
+That's it! With these steps, you can start using Job Board to post job openings and process payments using Bitcoin or the Lightning Network.
