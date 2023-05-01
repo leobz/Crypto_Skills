@@ -144,7 +144,7 @@ body {
 
 .field-big {
   height: 350px; /* Altura mínima del campo de texto */
-  width: 350px;
+  width: 100%;
 }
 
 .tittle-position{
