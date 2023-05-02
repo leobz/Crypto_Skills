@@ -44,6 +44,13 @@
             </div>
         <% end %>
       </div>
+
+      <!------------------------------------------------ Card Preview ----------------------------------------->
+      <h6 style="text-align: center;"> Board preview</h6>
+      <%=job_card(@job, true)%>
+      <br>
+
+      <h6 style="text-align: center;"> Description preview </h5>
     <% end %>
 
   <!------------------------------------ Job Description ------------------------------------------------------>
@@ -60,7 +67,7 @@
         <small class="text-body-secondary"><%= @job.created_at %></small>
       </span>
       <span class="card-text" style="float: right;">
-        <small class="text-body-secondary"> $<%= @job.salary %></small>
+        <small class="text-body-secondary"> $<%= @job.salary ? @job.salary : "------" %></small>
       </span>
     <br><br><br>
     <h5 class="card-title"> Job Description</h5>
