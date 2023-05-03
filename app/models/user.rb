@@ -27,4 +27,8 @@ class User < ApplicationRecord
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation)
   end
+
+  def self.current_user(session)
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
 end
