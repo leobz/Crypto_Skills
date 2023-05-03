@@ -19,9 +19,13 @@ bundle install
 1. Set up the environment variables by creating a `config/local_env.yml` file with the following fields:
 
 ```yml
-API_KEY: "your_api_key"
+# Admin
+ADMIN_PASSWORD: "your_admin_password"
+
+# Open Node
+API_KEY: "open_node_api_key"
 OPEN_NODE_URL: "https://api.opennode.com/v1/charges"
-MY_HOST: "deploy_domain_who_is_going_to_be_requested_by_the_webhook"
+MY_HOST: "deploy_domain_who_is_going_to_be_requested_by_the_open_node_webhook"
 ```
 
 You can obtain an API key by signing up for an account on OpenNode.
