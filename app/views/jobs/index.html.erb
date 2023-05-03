@@ -10,61 +10,34 @@
 
 
 <nav class="navbar-filtros">
+<!--
+  TODO: Delete if you are not going to add filters or sort by
   <div class="container-fluid">
     <form class="d-flex">
       <div class="sort-by">
         <div class="dropdown-center">
-          <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown">Fecha</button>
+          <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown">Sort by</button>
         </div>
       </div>
       <div class="filter">
       <div class="dropdown-center">
-        <button class="dropdown-toggle" type="button">Filtros</button>
+        <button class="dropdown-toggle" type="button">Filters</button>
       </div>
     </div>
     </form>
   </div>
+-->
 </nav>
 
+<%= link_to "New job", new_job_path %>
 
 
 
 <div id="jobs">
   <% @jobs.each do |job| %>
     <a href=<%=job_path(job)%> class="card-link">
-      <!------ Note: If you prefeer could use the method <%=job_card(job)%> to render this component ------>
-      <!------------------------------------ Card  --------------------------------------->
-      <div class="card">
-        <div class="row g-0 align-items-center">
-          <!--------------------------  Image  -------------------------->
-          <div class="col-2 d-flex justify-content-center">
-            <%= image_tag job.company_logo, style: "width: 50px; height: 50px;" %>
-          </div>
-          <!--------------------------  Body  -------------------------->
-          <div class="col-10">
-            <div class="card-body">
-              <!-------------- Title  ---------------->
-              <h5 class="card-title"><%= job.title %></h5>
-              <!-------------- Subtitle  ---------------->
-              <h6 class="card-subtitle mb-2 text-body-secondary"><%= job.company %></h6>
-
-              <!-------------- Secondary  ---------------->
-              <p class="card-text" style="line-height: 1;">
-                <small class="text-body-secondary"> <%= job.location %> <br class="small"> <%= job.location_mode %> </small>
-              </p>
-              <span class="card-text" style="float: left;">
-                <small class="text-body-secondary"><%= job.created_at %></small>
-              </span>
-              <span class="card-text" style="float: right;">
-                <small class="text-body-secondary"> $<%= job.salary %></small>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
+       <%=job_card(job)%>
     </a>
   <% end %>
-
 </div>
 
-<%= link_to "New job", new_job_path %>

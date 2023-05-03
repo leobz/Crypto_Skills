@@ -12,9 +12,9 @@
     <% if params["success"] == 'true' %>
       <div class="alert alert-success" role="alert">
         <h4 class="alert-heading">Successful posting!</h4>
-        Your job has been posted successfully. It will now appear on our job board and can be viewed by suitable candidates.
-        <br> Thank you for using our job posting service!
-        <br> <a href="/jobs">View Jobs</a>
+        Your job has been posted successfully. It will now appear on our job board for 8 weeks.
+        <br> Thank you for using our job posting service
+        <br> <a href="/jobs">Go to Job Board</a>
       </div>
     <% end %>
 
@@ -44,6 +44,13 @@
             </div>
         <% end %>
       </div>
+
+      <!------------------------------------------------ Card Preview ----------------------------------------->
+      <h6 style="text-align: center;"> Board preview</h6>
+      <%=job_card(@job, true)%>
+      <br>
+
+      <h6 style="text-align: center;"> Description preview </h5>
     <% end %>
 
   <!------------------------------------ Job Description ------------------------------------------------------>
@@ -60,11 +67,11 @@
         <small class="text-body-secondary"><%= @job.created_at %></small>
       </span>
       <span class="card-text" style="float: right;">
-        <small class="text-body-secondary"> $<%= @job.salary %></small>
+        <small class="text-body-secondary"> $<%= @job.salary ? @job.salary : "------" %></small>
       </span>
     <br><br><br>
     <h5 class="card-title"> Job Description</h5>
-    <p class="card-text"><%= raw @job.description %>
+    <p class="card-text", style="white-space: pre-wrap;"> <%= @job.description %>
     </p>
   </div>
 </div>

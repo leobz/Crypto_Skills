@@ -1,9 +1,9 @@
 class JobsController < ApplicationController
-  before_action :set_job, :format_description, only: %i[ show edit update destroy ]
+  before_action :set_job, only: %i[ show edit update destroy ]
 
   # GET /jobs or /jobs.json
   def index
-    @jobs = Job.all
+    @jobs = Job.all.filter {|j| j.published == true}
   end
 
   # GET /jobs/1 or /jobs/1.json
@@ -66,12 +66,5 @@ class JobsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def job_params
       params.require(:job).permit(:title, :description, :website, :company, :company_logo, :location, :location_mode, :salary, :category)
-    end
-
-    def format_description
-      # Convert line breaks of :description field into <br> tags to render correct view
-      if params[:job].present? && params[:job][:description].present?
-        params[:job][:description] = ActionController::Base.helpers.simple_format(params[:job][:description])
-      end
     end
 end
