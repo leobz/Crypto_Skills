@@ -53,6 +53,7 @@ class JobsController < ApplicationController
 
   # DELETE /jobs/1 or /jobs/1.json
   def destroy
+    @job.invoice.clear
     @job.destroy
 
     respond_to do |format|
