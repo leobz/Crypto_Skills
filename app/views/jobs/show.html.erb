@@ -1,8 +1,12 @@
 <p style="color: green"><%= notice %></p>
 
-  <%= link_to "Edit this job", edit_job_path(@job) %> |
-  <%= link_to "Back to jobs", jobs_path %>
+<%= link_to "Back to jobs", jobs_path %>
+
+<!-------------------- Show Edit/Delete Job ----------------------->
+<% if current_user || @job.published == false %>
+  | <%= link_to "Edit this job", edit_job_path(@job) %>
   <%= button_to "Destroy this job", @job, method: :delete %>
+<% end %>
 
 <!---------------------------------------------------- Card -------------------------------------------------->
 <div class="card">
