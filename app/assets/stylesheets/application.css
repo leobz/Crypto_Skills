@@ -14,87 +14,35 @@
  *= require_self
  */
 
+
+/************************************** Application  ***********************************/
 body {
-    background: #E5E5E5 !important;
-    padding-bottom: 50px;
+  background: #E5E5E5 !important;
 }
-
-
-/************************************** Main Navbar  ***********************************/
-.navbar{
-    background-color: #0A1C2E;
-    height: 4em;
-}
-
-.container-fluid.main-navbar{
-    margin-bottom: 50%;
-    margin-left: 2%;
-}
-
-.navbar-brand{
-    color: #E5E5E5 !important;
-}
-
-#crypto-jobs {
-    font-family: 'Karantina';
-    font-size: 30px;
-    font-weight: bold;
-}
-
-#crypto-jobs::first-letter {
-    font-size: 120%;
-}
-
-.icons-container{
-    justify-content: flex-end;
-}
-
-/************************************** Jobs Index  ***********************************/
 
 .navbar-search{
-    background: #0A1C2E;
-    height: 61px;
-    top: 90px;
-}
+    background: black;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 0px 0px 10px 10px;
+  }
 
 .form-control.search{
-    margin-left: 2%;
-    margin-right: 4%;
-    height: 3em;
+    margin-left: 10%;
+    margin-right: 2%;
+    width: 75%;
     background-image: url('https://cdn-icons-png.flaticon.com/512/3917/3917754.png');
-    background-position: right center;
+    background-position: 95% 50%;
     background-size: 20px 22px;
     background-repeat: no-repeat;
-    background-position-x: 95%;
+    border-radius: 15px;
 }
 
-.sort-by{
-    margin-left: 2%;
+/* Reduce search box size in mobile screens*/
+@media (max-width: 767px) {
+  .form-control.search{  width: 55%;}
 }
 
-.navbar-filtros{
-    border-radius: 0px 0px 15px 15px;
-    background: #0A1C2E;
-    height: 65px;
-    margin-bottom: 5px;
-}
-
-.dropdown-toggle{
-    background: #FFFFFF;
-    border-radius: 10px;
-    height: 2em;
-
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 18px;
-
-    color: #0A1C2E;
-}
-
-
-/*********************** Cards  *******************/
+/******************************* Cards General ***************************/
 
 .card{
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -118,8 +66,38 @@ body {
      border-radius: 0px;
 }
 
+/*************************** Cards Job Preview *******************/
+
+/* Reduce font size in mobile screens*/
+@media (max-width: 767px) {
+  .card-body.preview-card h5 {
+    font-size: 1.1em;
+  }
+  .card-body.preview-card * {
+    font-size: 0.85em;
+  }
+}
+
+@media (min-width: 767px) {
+  .card-body.preview-card h5 {
+    font-size: 1.6em;
+  }
+}
 
 
+/******************************* Cards Job Show ***************************/
+
+.card.show{
+  padding-top: 0px;
+  transform: scale(0.96) translateY(-2%);
+}
+
+/* Reduce font size in mobile screens*/
+@media (max-width: 767px) {
+  .show-description h2 {font-size: 1.25em;}
+  .show-description h5 {font-size: 1em;}
+  .show-description * {font-size: 0.85em;}
+}
 /******************************Jobs Show**************************************/
 
 

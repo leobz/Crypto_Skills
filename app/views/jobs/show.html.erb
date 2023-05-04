@@ -1,6 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
-<%= link_to "Back to jobs", jobs_path %>
+<%= link_to "Back to jobs", jobs_path, style: "margin-left: 3%;" %>
+<a href="/jobs"> <%= image_tag "icons/Vector.png", style: "width: 24.5px; height: 24.5px;"%> </a>
 
 <!-------------------- Show Edit/Delete Job ----------------------->
 <% if current_user || @job.published == false %>
@@ -9,10 +10,9 @@
 <% end %>
 
 <!---------------------------------------------------- Card -------------------------------------------------->
-<div class="card">
+<div class="card show">
   <div class="card-body">
   <!------------------------------------ Publication Success Notification ------------------------------------>
-
     <% if params["success"] == 'true' %>
       <div class="alert alert-success" role="alert">
         <h4 class="alert-heading">Successful posting!</h4>
@@ -58,12 +58,8 @@
     <% end %>
 
   <!------------------------------------ Job Description ------------------------------------------------------>
-
-    <h2 class="card-title"><%= @job.title %>
-      <a href="/jobs">
-        <%= image_tag "icons/Vector.png", style: "width: 24.5px; height: 24.5px;"%>
-      </a>
-    </h2>
+  <div class="show-description">
+    <h2 class="card-title"><%= @job.title %></h2>
       <p class="card-text" style="line-height: 1;">
         <small class="text-body-secondary"> <%= @job.company%> - <%= @job.location %> - <%= @job.location_mode %> </small>
       </p>
@@ -75,10 +71,12 @@
       </span>
     <br><br><br>
     <h5 class="card-title"> Job Description</h5>
-    <p class="card-text", style="white-space: pre-wrap;"> <%= @job.description %>
-    </p>
+    <p class="card-text", style="white-space: pre-wrap;"> <%= @job.description %></p>
+    <br><br>
+    </div>
   </div>
 </div>
+
 
 <!------------------------------------------ Apply Buttom ------------------------------------------------------->
 
