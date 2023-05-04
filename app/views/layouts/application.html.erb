@@ -29,7 +29,7 @@
     <nav class="navbar-search">
       <div class="container-fluid" style="padding: 20px 0;">
         <form class="d-flex" role="search">
-          <input class="form-control search" type="search" placeholder="Search Job">
+          <input class="form-control search" type="search" id="search-input" placeholder="Search Job">
           <a href="<%=new_job_path%>" class="btn btn-outline-light">Post Job</a>
         </form>
       </div>
@@ -38,3 +38,17 @@
   <%= yield %>
   </body>
 </html>
+
+
+<!------------------------------------- Search Logic  ---------------------------------------->
+<script>
+  var searchInput = document.querySelector('#search-input');
+
+  searchInput.addEventListener('keydown', (event) => {
+    if (event.keyCode === 13) {
+      var searchTerm = searchInput.value;
+      var endpointUrl = `/jobs?key=${encodeURIComponent(searchTerm)}`;
+      window.location.href = endpointUrl;
+    }
+  });
+</script>
