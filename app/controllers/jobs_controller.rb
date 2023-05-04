@@ -1,10 +1,13 @@
 class JobsController < ApplicationController
   before_action :set_job, only: %i[ show edit update destroy ]
   before_action :authenticate_request, only: %i[ edit update destroy]
+  after_action :allow_iframe
+  skip_before_action :verify_authenticity_token
 
   # GET /jobs or /jobs.json
   def index
     @jobs = Job.all.filter {|j| j.published == true}
+    @jobs.sort_by! {|j| - j.created_at.to_i}
   end
 
   # GET /jobs/1 or /jobs/1.json
@@ -71,5 +74,9 @@ class JobsController < ApplicationController
 
     def authenticate_request
       redirect_to root_url unless User.current_user(session) || Job.find(params[:id]).published == false
+    end
+
+    def allow_iframe
+      response.headers.except! 'X-Frame-Options'
     end
 end
