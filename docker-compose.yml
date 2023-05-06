@@ -1,0 +1,22 @@
+services:
+  job_board_db:
+    image: postgres:14.1-alpine
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=job_board
+    ports:
+      - '5432:5432'
+
+  job_board:
+    image: job_board:latest
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+
+volumes:
+  data:
+    driver: local
