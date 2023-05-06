@@ -34,7 +34,7 @@ services:
   job_board:
     image: leobz/job_board:latest
     environment:
-      - DB_NAME=job_board_db
+      - DB_HOST=job_board_db
       - MY_HOST=${MY_HOST}
       - API_KEY=${API_KEY}
       - OPEN_NODE_URL=${OPEN_NODE_URL}

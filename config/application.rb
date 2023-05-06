@@ -20,9 +20,9 @@ module JobBoard
     config.load_defaults 7.0
 
     # Host
-    config.hosts << "bitcoinnews.com.ar"
-    config.x.app.my_host = "bitcoinnews.com.ar"
     config.hosts << "frontend"
+    config.hosts << ENV['MY_HOST'] || "bitcoinnews.com.ar"
+    config.x.app.my_host = ENV['MY_HOST'] || "bitcoinnews.com.ar"
 
     # OpenNode
     config.x.opennode.opennode_url = ENV['OPEN_NODE_URL']
