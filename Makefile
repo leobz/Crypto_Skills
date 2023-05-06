@@ -1,3 +1,10 @@
+## Docker compose backward compatibility to older versions
+## More info: https://docs.docker.com/compose/#compose-v2-and-the-new-docker-compose-command
+define DOCKER_COMPOSE
+	@if which docker-compose  >/dev/null ; then docker-compose  $1; \
+	else docker compose $1; fi;
+endef
+
 default: help
 
 .PHONY: help
@@ -10,21 +17,20 @@ build: # Build docker image.
 
 .PHONY: prod
 prod: # Run app and db in containers
-	docker compose up
+	$(call DOCKER_COMPOSE, up -d)
 
 .PHONY: dev
 dev: #Run app local and db in container
-	docker compose -f docker-compose-dev.yml up -d
+	$(call DOCKER_COMPOSE, -f docker-compose-dev.yml up -d)
 	sh start_app.sh
-	docker compose stop
 
 .PHONY: stop
 stop: # Terminates the execution of all containers
-	docker compose down --remove-orphans
+	$(call DOCKER_COMPOSE, down --remove-orphans)
 
 .PHONY: clean
 clean: # Terminates the execution of all containers + delete volumes
-	docker compose down -v --remove-orphans
+	$(call DOCKER_COMPOSE, -v down --remove-orphans)
 	rm -r db-data/*
 
 .PHONY: push-image
