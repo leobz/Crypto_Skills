@@ -8,7 +8,7 @@ module JobsHelper
         end +
         #***************************** Body ******************************
         content_tag(:div, class: "col-10") do
-          content_tag(:div, class: "card-body") do
+          content_tag(:div, class: "card-body preview-card") do
             #***************************** Title *************************
             content_tag(:h5, job.title, class: 'card-title') +
             #***************************** Subtitle **********************

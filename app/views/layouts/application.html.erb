@@ -25,20 +25,30 @@
         <%= link_to "Log out", log_out_path %>
       <% end %>
     </div>
-
-    <!------------------------------------- Navbar  ---------------------------------------->
-    <nav class="navbar">
-      <div class="container-fluid main-navbar">
-        <a class="navbar-brand" id="crypto-jobs" href="#">Crypto Jobs</a>
-
-        <div class="icons-container">
-          <%= image_tag "icons/home.png", style: "width: 24.5px; height: 24.5px;" %>
-          <%= image_tag "icons/search.png" , style: "width: 18px; height: 17.5px;" %>
-          <%= image_tag "icons/menu.png" , style: "width: 24px; height: 17.5px;" %>
-        </div>
-
+    <!--------------------------------- Navbar Search ----------------------------------->
+    <nav class="navbar-search">
+      <div class="container-fluid" style="padding: 20px 0;">
+        <form class="d-flex" role="search">
+          <input class="form-control search" type="search" id="search-input" placeholder="Search Job">
+          <a href="<%=new_job_path%>" class="btn btn-outline-light">Post Job</a>
+        </form>
       </div>
     </nav>
+
   <%= yield %>
   </body>
 </html>
+
+
+<!------------------------------------- Search Logic  ---------------------------------------->
+<script>
+  var searchInput = document.querySelector('#search-input');
+
+  searchInput.addEventListener('keydown', (event) => {
+    if (event.keyCode === 13) {
+      var searchTerm = searchInput.value;
+      var endpointUrl = `/jobs?key=${encodeURIComponent(searchTerm)}`;
+      window.location.href = endpointUrl;
+    }
+  });
+</script>

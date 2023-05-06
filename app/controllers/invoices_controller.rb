@@ -3,7 +3,7 @@ require 'net/http'
 require 'json'
 
 class InvoicesController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [:webhook]
+  skip_before_action :verify_authenticity_token
 
   API_KEY = Rails.configuration.x.opennode.api_key
 
