@@ -26,3 +26,12 @@ stop: # Terminates the execution of all containers
 clean: # Terminates the execution of all containers + delete volumes
 	docker compose down -v --remove-orphans
 	rm -r db-data/*
+
+.PHONY: push-image
+push-image: # Push image to registry
+	docker tag job_board:latest leobz/job_board:latest
+	docker push leobz/job_board:latest
+
+.PHONY: pull-images
+pull-images: # Pull images from registry
+	docker pull leobz/job_board:latest

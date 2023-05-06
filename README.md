@@ -23,6 +23,11 @@ MY_HOST: "deploy_domain_who_is_going_to_be_requested_by_the_open_node_webhook"
 
 You can obtain an API key by signing up for an account on OpenNode. See [open node documentation](https://developers.opennode.com/docs/creating-a-charge)
 
+3. (Optional) Login to dockerhub to push images
+
+```
+docker login -u <user> -p <password>
+```
 
 ## Basic Commands: Development
 
