@@ -4,7 +4,7 @@ default: &default
   username: postgres
   password: postgres
   encoding: unicode
-  host: job_board_db
+  host:  <%= ENV['DB_NAME'] || 'localhost' %>
   pool: 5
   timeout: 5000
 
