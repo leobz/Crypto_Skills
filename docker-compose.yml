@@ -13,7 +13,7 @@ services:
       - '5432:5432'
 
   job_board:
-    image: job_board:latest
+    image: leobz/job_board:latest
     environment:
       - DB_NAME=job_board_db
     ports:
