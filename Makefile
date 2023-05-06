@@ -14,6 +14,7 @@ help: # Show help for each of the Makefile recipes.
 .PHONY: build
 build: # Build docker image.
 	docker build -t job_board:latest .
+	docker tag job_board:latest leobz/job_board:latest
 
 .PHONY: prod
 prod: # Run app and db in containers
