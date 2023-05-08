@@ -42,3 +42,7 @@ push-image: # Push image to registry
 .PHONY: pull-images
 pull-images: # Pull images from registry
 	docker pull leobz/job_board:latest
+
+.PHONY: cp
+cp: # Usage: make cp dir=<file_path> | Copy files from host to Rails container
+	docker cp $(dir) job_board-job_board-1:/myapp/$(dir)
