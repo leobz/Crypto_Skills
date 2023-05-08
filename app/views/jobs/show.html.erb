@@ -1,14 +1,15 @@
-<p style="color: green"><%= notice %></p>
-<div>
-  <%= link_to "Back to jobs", jobs_path, style: "margin-left: 3%;" %>
-  <a href="/jobs"> <%= image_tag "icons/Vector.png", style: "width: 24.5px; height: 24.5px;"%> </a>
-</div>
+<p></p>
+<div class="d-flex" style="margin: 0 0 1% 2%;">
+    <!-------------------- Show Edit/Delete Job ----------------------->
+    <% if current_user || @job.published == false %>
+      <%= back_to_jobs_button("small") %>
 
-<!-------------------- Show Edit/Delete Job ----------------------->
-<% if current_user || @job.published == false %>
-  | <%= link_to "Edit this job", edit_job_path(@job) %>
-  <%= button_to "Destroy this job", @job, method: :delete %>
-<% end %>
+      <%= link_to "Edit", edit_job_path(@job), class: "btn btn-dark btn-sm ms-1"%>
+      <%= button_to "Destroy", @job, method: :delete , class: "btn btn-dark btn-sm ms-1"%>
+    <% else %>
+      <%= back_to_jobs_button %>
+    <% end %>
+</div>
 
 <!---------------------------------------------------- Card -------------------------------------------------->
 <div class="card show">

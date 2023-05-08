@@ -30,4 +30,10 @@ module JobsHelper
       end
     end
   end
+
+  def back_to_jobs_button(small = nil)
+    link_to jobs_path, class: "btn btn-dark" + (small ? ' btn-sm' : '') do
+      content_tag(:i, "", class: "fa fa-solid fa-rotate-left") + " | Back to jobs"
+    end
+  end
 end
