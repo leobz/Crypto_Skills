@@ -1,0 +1,50 @@
+version: "3.0"
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - 80:80
+      - 443:443
+    restart: always
+    depends_on:
+      - job_board
+    volumes:
+      - ./nginx/conf/:/etc/nginx/conf.d/:ro
+      - ./certbot/www:/var/www/certbot/:ro
+      - ./certbot/conf/:/etc/nginx/ssl/:ro
+
+  certbot:
+    image: certbot/certbot:latest
+    volumes:
+      - ./certbot/www/:/var/www/certbot/:rw
+      - ./certbot/conf/:/etc/letsencrypt/:rw
+
+  job_board_db:
+    image: postgres:14.1-alpine
+    restart: always
+    volumes:
+      - ./db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=job_board
+    ports:
+      - '5432:5432'
+
+  job_board:
+    image: leobz/job_board:latest
+    environment:
+      - DB_HOST=job_board_db
+      - MY_HOST=${MY_HOST}
+      - API_KEY=${API_KEY}
+      - OPEN_NODE_URL=${OPEN_NODE_URL}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - PORT=3000
+    ports:
+      - '3000:3000'
+    depends_on:
+      - job_board_db
+
+volumes:
+  db-data:
+    driver: local

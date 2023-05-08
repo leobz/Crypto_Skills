@@ -6,6 +6,11 @@
 
 # Ignore ENV variables .yml file
 config/local_env.yml
+.env
+
+/certbot
+/db-data
+data/certbot
 
 # Ignore bundler config.
 /.bundle

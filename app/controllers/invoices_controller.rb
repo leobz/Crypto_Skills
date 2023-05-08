@@ -62,7 +62,6 @@ class InvoicesController < ApplicationController
       callback_url: parsed_body['data']['callback_url'],                            
       success_url: parsed_body['data']['success_url'],                             
       auto_settle: parsed_body['data']['auto_settle'],                             
-      notif_email: parsed_body['data']['notif_email'],                             
       customer_email: customer_email,                          
       notif_email: parsed_body['data']['notif_email'],                             
       ttl: parsed_body['data']['ttl']

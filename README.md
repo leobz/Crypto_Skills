@@ -6,18 +6,10 @@ Job Board is a platform for posting job openings and processing payments using B
 
 Job Board allows employers to post job openings and job seekers to find and apply for relevant jobs. It includes a payment gateway that enables employers to pay for job postings using Bitcoin or the Lightning Network. This provides a simple, fast, and secure way to process payments and ensures that job postings are visible to a large audience.
 
-## Getting Started
+## Setup
 
-To get started with Job Board, follow these steps:
-
-1. Clone the repository to your local machine.
-2. Install the required dependencies by running the following command:
-
-```bash
-bundle install
-```
-
-3. Set up the environment variables by creating a `config/local_env.yml` file with the following fields:
+1. Install [docker](https://docs.docker.com/engine/install/)
+2. Set up the environment variables by creating a `config/local_env.yml` file with the following fields:
 
 ```yml
 # Admin
@@ -31,13 +23,63 @@ MY_HOST: "deploy_domain_who_is_going_to_be_requested_by_the_open_node_webhook"
 
 You can obtain an API key by signing up for an account on OpenNode. See [open node documentation](https://developers.opennode.com/docs/creating-a-charge)
 
-4. Start the server by running the following command:
+3. (Optional) Login to dockerhub to push images
 
-```bash
-rails server
+```
+docker login -u <user> -p <password>
 ```
 
-This will start the Job Board application on http://localhost:3000.
+## Basic Commands: Development
+
+Run app:
+
+```
+# Install ruby dependencies
+bundle install
+
+# Run the Ruby app locally + DB in container
+make dev
+```
+
+Now you can visit [`localhost:3000`](http://localhost:3000)
+
+
+Stop app:
+
+```
+make stop # Terminates the execution of all containers
+```
+
+## Basic Commands: Production
+
+1. Download latest tagged image from Docker registry
+
+```
+# TODO make pull-images
+make build
+```
+
+2. Stop old containers
+
+```
+make stop
+```
+
+3. Run docker project
+
+```
+make prod
+```
+
+Now you can visit [`localhost:3000`](http://localhost:3000)
+
+## Clean containers
+
+* After using the containers, you can destroy them with their volumes using `make clean`
+
+## Available tasks
+
+You can see available tasks (build, dev, prod, etc) and what they do with `make`
 
 ## Running Tests
 
@@ -46,14 +88,3 @@ To run the tests for Job Board, run the following command:
 ```bash
 rake test
 ```
-
-## Dependencies
-
-Job Board requires the following dependencies:
-
-- Ruby
-- Rails
-- Bundle
-- OpenNode API
-
-That's it! With these steps, you can start using Job Board to post job openings and process payments using Bitcoin or the Lightning Network.

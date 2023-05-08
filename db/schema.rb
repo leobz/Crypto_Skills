@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_05_03_020503) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -71,11 +74,26 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_03_020503) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "media_links", default: "--- []\n"
+    t.string "media_links", default: [], array: true
   end
 
-# Could not dump table "invoices" because of following StandardError
-#   Unknown type 'uuid' for column 'id'
+  create_table "invoices", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.bigint "job_id"
+    t.string "status"
+    t.decimal "amount"
+    t.decimal "fiat_value"
+    t.string "description"
+    t.string "currency"
+    t.string "customer_email"
+    t.string "notif_email"
+    t.string "callback_url"
+    t.string "success_url"
+    t.boolean "auto_settle"
+    t.integer "ttl"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_id"], name: "index_invoices_on_job_id"
+  end
 
   create_table "jobs", force: :cascade do |t|
     t.string "title"
