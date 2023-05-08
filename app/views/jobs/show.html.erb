@@ -1,7 +1,8 @@
 <p style="color: green"><%= notice %></p>
-
-<%= link_to "Back to jobs", jobs_path, style: "margin-left: 3%;" %>
-<a href="/jobs"> <%= image_tag "icons/Vector.png", style: "width: 24.5px; height: 24.5px;"%> </a>
+<div>
+  <%= link_to "Back to jobs", jobs_path, style: "margin-left: 3%;" %>
+  <a href="/jobs"> <%= image_tag "icons/Vector.png", style: "width: 24.5px; height: 24.5px;"%> </a>
+</div>
 
 <!-------------------- Show Edit/Delete Job ----------------------->
 <% if current_user || @job.published == false %>
@@ -83,7 +84,7 @@
 <div class="container-fluid fixed-bottom white">
   <div class="row">
     <div class="col-12 d-flex justify-content-center align-items-center" style="height: 10vh;">
-      <a href="<%=@job.website%>" class="btn btn-primary apply-buttom">Apply</a>
+      <a href="<%=@job.website%>" target="_blank" class="btn btn-primary apply-buttom">Apply</a>
     </div>
   </div>
 </div>

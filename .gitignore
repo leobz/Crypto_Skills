@@ -10,6 +10,7 @@ config/local_env.yml
 
 /certbot
 /db-data
+data/certbot
 
 # Ignore bundler config.
 /.bundle

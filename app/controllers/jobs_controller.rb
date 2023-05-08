@@ -7,7 +7,7 @@ class JobsController < ApplicationController
   # GET /jobs or /jobs.json
   def index
     key = "%#{params[:key]}%"
-    @jobs = Job.where("title LIKE ? OR description LIKE ?", key, key)
+    @jobs = Job.where("UPPER(title) LIKE UPPER(?) OR UPPER(description) LIKE UPPER(?)", key, key)
     @jobs = @jobs.filter {|j| j.published == true}
     @jobs.sort_by! {|j| - j.created_at.to_i}
   end
