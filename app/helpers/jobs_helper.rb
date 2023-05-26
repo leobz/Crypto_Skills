@@ -1,6 +1,6 @@
 module JobsHelper
   def job_card(job, full_size = nil)
-    content_tag(:div, class: "card", style: "margin-bottom: 0.5%;" + (full_size ? 'transform: scale(1);' : '')) do
+    content_tag(:div, class: "card card-index", style: "margin-bottom: 0.5%;" + (full_size ? 'transform: scale(1);' : '')) do
       content_tag(:div, class: "row g-0 align-items-center") do
         #***************************** Image *****************************
         content_tag(:div, class: "col-2 d-flex justify-content-center") do

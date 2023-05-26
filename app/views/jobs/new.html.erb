@@ -1,18 +1,12 @@
-<p style="color: green"><%= notice %></p>
 
-<%= back_to_jobs_button %>
+<%= image_tag "post_hardcoded_message.jpg", style: "display: block; width: 50%; margin-left: auto; margin-right: auto;"%>
 
-<!------------------------------------ Card  --------------------------------------->
-<div class="card">
-  <div class="row g-0 align-items-center">
-    <!--------------------------  Body  -------------------------->
-      <div class="card-body">
-        <!-------------- Title  ---------------->
-        <h2 class="card-title">New job</h2>
-        <!-------------- Form  ---------------->
-        <%= render "form", job: @job, edit: false %>
+<div class="form-widht">
+  <p style="color: green"><%= notice %></p>
 
-      </div>
+  <div style="padding-left:2%">
+  <%= back_to_jobs_button %>
   </div>
-</div>
 
+  <%= render "form", job: @job, edit: false %>
+</div>

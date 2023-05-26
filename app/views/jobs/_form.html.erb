@@ -1,73 +1,206 @@
-<%= form_with(model: job) do |form| %>
-  <% if job.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(job.errors.count, "error") %> prohibited this job from being saved:</h2>
-      <ul>
-        <% job.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<!------------------------------------ Form Validation --------------------------------------->
+<script>
+$(document).ready(function() {
+  $('#job_form').validate({
+    errorElement: 'span',
+    errorClass: 'error-message',
+    errorPlacement: function(error, element) {
+      error.appendTo(element.parent());
+    }
+  });
+});
+</script>
+
+<style>
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+  display: block;
+}
+</style>
+
+<!------------------------------------ Show Company Logo Preview --------------------------------------->
+
+<script>
+function showPreview(event) {
+  const fileInput = event.target;
+  const previewImage = document.getElementById('preview-image');
+  const cameraIcon = document.getElementById('camera-icon');
+
+  if (fileInput.files && fileInput.files[0]) {
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+      previewImage.setAttribute('src', e.target.result);
+      cameraIcon.style.display = 'none'; // Ocultar el icono de la cámara
+    };
+
+    reader.readAsDataURL(fileInput.files[0]);
+  } else {
+    previewImage.setAttribute('src', ''); // Eliminar la vista previa de la imagen
+    cameraIcon.style.display = 'block'; // Mostrar el icono de la cámara
+  }
+}
+</script>
+
+<%= form_with(model: job, :html => { :id => "job_form", :style => "background:transparent;" }) do |form| %>
+  <!------------------------------------ Card Job info section--------------------------------------->
+  <div class="card card-form" style="padding: 2% 5% 2% 5%;">
+    <div class="card-body">
+      <!-------------- Title  ---------------->
+      <h4 class="form-title">Job Info</h4>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="input-form mx-auto w-85 text-center">
+            <%= form.label "Job Title *", class: "d-block tittle-position fuente-letras" %>
+            <%= form.text_field :title, class: "form-control fuente-letras", required: true%>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="input-form mx-auto w-85 text-center">
+            <%= form.label "Job Type", class: "d-block tittle-position fuente-letras" %>
+            <%= form.select :job_type, ["Full-time", "Part-time"], {}, { class: "form-control fuente-letras" } %>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="input-form mx-auto w-85 text-center">
+          <%= form.label "Description *",  class: "d-block tittle-position fuente-letras" %>
+          <%= form.text_area :description, class: "form-control fuente-letras field-big" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="input-form mx-auto w-85 text-center">
+            <%= form.label "Job Location", class: "d-block tittle-position fuente-letras" %>
+            <%= form.text_field :location, placeholder: "City, State, Country...",   class: "form-control fuente-letras" %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-check form-check-inline input-form fuente-letras">
+          <%= form.radio_button :location_mode, 'ON_SITE', checked: "checked",  type: "radio", class:"form-check-input check" %> Onsite Only
+          </div>
+          <div class="form-check form-check-inline fuente-letras">
+            <%= form.radio_button :location_mode, 'HIBRYD', type: "radio", class: "form-check-input" %> Remote OK
+          </div>
+        </div>
+      </div>
+
+      <div class="input-form mx-auto w-85 text-center">
+        <%= form.label "Skills *", class: "d-block tittle-position fuente-letras" %>
+        <%= form.select :skills, ["A", "B"],{ include_blank: "- nothing selected -" }, { class: "form-control fuente-letras", required: true} %>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="input-form mx-auto w-85 text-center">
+            <%= form.label "Salary Timeframe", class: "d-block tittle-position fuente-letras" %>
+            <%= form.select :salary_timeframe, ["Monthly", "Anually"], {}, { class: "form-control fuente-letras" } %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="input-form mx-auto w-85 text-center">
+            <%= form.label "Currency", class: "d-block tittle-position fuente-letras" %>
+            <%= form.select :currency, ["USD", "ARS"], {}, { class: "form-control fuente-letras" } %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 ">
+          <div class="input-form mx-auto w-85 text-center">
+            <%= form.label "Min Salary", class: "d-block tittle-position fuente-letras" %>
+            <%= form.text_field :min_salary, class: "form-control fuente-letras" %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="input-form mx-auto w-85 text-center">
+            <%= form.label "Max Salary", class: "d-block tittle-position fuente-letras" %>
+            <%= form.text_field :max_salary, class: "form-control fuente-letras" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="input-form mx-auto w-85">
+        <%= form.label "Link to apply *", class: "d-block tittle-position fuente-letras" %>
+        <%= form.url_field :website, placeholder: "https://", class: "form-control fuente-letras", required: true %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="mx-auto w-85 text-center">
-    <%= form.label :company_name, class: "d-block tittle-position fuente-letras";%>
-    <%= form.text_field :company, class: "form-control rounded border-dark" %>
   </div>
 
-  <div>
-    <%= form.label :company_logo, class: "d.d-block tittle-position fuente-letras" %>
-    <%= form.file_field :company_logo, class: "fuente-letras" %>
+  <!------------------------------------ Card Company Info section--------------------------------------->
+  <br><div class="card card-form" style="padding: 2% 5% 2% 5%">
+    <div class="card-body">
+      <!-------------- Title  ---------------->
+      <h4 class="form-title">Company Info</h4>
+
+      <div class="row">
+        <div class="col-md-9 ">
+          <div class="input-form mx-auto w-85 text-center">
+            <%= form.label "Company *", class: "d-block tittle-position fuente-letras";%>
+            <%= form.text_field :company, class: "form-control fuente-letras", required: true%>
+          </div>
+          <div class="input-form mx-auto w-85 text-center">
+            <%= form.label "Company Website", class: "d-block tittle-position fuente-letras";%>
+            <%= form.url_field :company_website, class: "form-control fuente-letras" %>
+          </div>
+          <div class="input-form mx-auto w-85 text-center">
+            <%= form.label "Company Description *", class: "d-block tittle-position fuente-letras" %>
+            <%= form.text_area :company_description, class: "form-control fuente-letras field-medium", required: true%>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="image-upload">
+            <div class="input-form mx-auto w-85 text-center">
+              <%= form.label "Company Logo *", class: "d.d-block tittle-position fuente-letras" %>
+              <label for="job_company_logo" id="file-label">
+                <div id="circle">
+                  <img id="preview-image" src="https://media.istockphoto.com/id/1222357475/vector/image-preview-icon-picture-placeholder-for-website-or-ui-ux-design-vector-illustration.jpg?s=170667a&w=0&k=20&c=IyNlM1yfvw2UAitPPF7hIBBsr4IZjZJUDS1C5YgmiwA=" alt="Isotipo">
+                  <img id="camera-icon" src="https://i.pinimg.com/originals/8d/d5/03/8dd503e19486af437d9aa62d681bccd4.jpg" alt="Icono de cámara">
+                </div>
+              </label>
+              <%= form.file_field :company_logo, class: "fuente-letras visually-hidden", onchange: "showPreview(event);", required: true%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="mx-auto w-85 text-center">
-    <%= form.label :location, class: "d-block tittle-position fuente-letras" %>
-    <%= form.text_field :location, class: "form-control rounded border-dark" %>
-  </div>
+  <!------------------------------------ Card Email Info section--------------------------------------->
+  <br><div class="card card-form" style="padding: 2% 5% 2% 5%">
+    <div class="card-body">
+      <!-------------- Title  ---------------->
+      <h4 class="form-title">Email</h4>
 
-  <div class="mx-auto w-85 text-center">
-    <%= form.label :location_mode, class: "d-block tittle-position fuente-letras" %>
-    <%= form.select :location_mode, Job.location_modes.keys, {}, { class: "form-control rounden w-100 border-dark text-center" } %>
+      <div class="input-form mx-auto w-85">
+        <%= form.label "Email *", class: "d-block tittle-position fuente-letras";%>
+        <small class="form-text text-muted" style="font-size: 10px;">You email won't be displayed. We'll send your the receipt and the link to manage your listing.</small>
+        <%= form.email_field :email, class: "form-control fuente-letras", required: true%>
+      </div>
+    </div>
   </div>
-
-  <div class="mx-auto w-85 text-center">
-    <%= form.label :estimate_salary, class: "d-block tittle-position fuente-letras" %>
-    <%= form.number_field :salary, class: "form-control rounded border-dark" %>
-  </div>
-
-  <div class="mx-auto w-85 text-center">
-    <%= form.label :title, class: "d-block tittle-position fuente-letras" %>
-    <%= form.text_field :title, class: "form-control rounded border-dark" %>
-  </div>
-
-  <div>
-    <%= form.label :description, class:"d-block fuente-letras" %>
-    <%= form.text_area :description, class: "field field-big" %>
-  </div>
-
-  <div class="mx-auto w-85 text-center">
-    <%= form.label :job_website, class: "d-block tittle-position fuente-letras" %>
-    <%= form.text_field :website, class: "form-control rounded border-dark" %>
-  </div>
-  <p><small>
-    Applicants will be sent to the website you specify to apply for the position.
-  </small></p>
-
-<!----------------------------------------- Form submit buttom ------------------------------------------->
-  <div class="container-fluid.fixed-bottom white">
-    <div class="row">
+    
+  <!------------------------------------ Button section--------------------------------------->
+  <br><br><div class="card card-form" style="padding: 2% 5% 2% 5%">
+    <div class="card-body">
       <div class="col-12 d-flex justify-content-center align-items-center" style="height: 10vh;">
         <%=
           if edit == true
             form.submit "Update", class: "btn btn-primary apply-buttom"
           else
-            form.submit "Continue" , class: "btn btn-primary apply-buttom"
+            form.submit "Preview" , class: "btn btn-primary apply-buttom"
           end
         %>
       </div>
     </div>
-  </div>
-
+  </div> 
 <% end %>
 
   

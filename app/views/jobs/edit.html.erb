@@ -4,16 +4,6 @@
   <%= back_to_jobs_button("small") %>
 </div>
 
-<!------------------------------------ Card  --------------------------------------->
-<div class="card">
-  <div class="row g-0 align-items-center">
-    <!--------------------------  Body  -------------------------->
-      <div class="card-body">
-        <!-------------- Title  ---------------->
-        <h2 class="card-title">Edit job</h2>
-        <!-------------- Form  ---------------->
-        <%= render "form", job: @job, edit: true %>
+<%= render "form", job: @job, edit: true %>
 
-      </div>
-  </div>
 </div>
