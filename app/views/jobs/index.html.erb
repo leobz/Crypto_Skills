@@ -1,10 +1,135 @@
 <br>
-
-<div id="jobs">
-  <% @jobs.each do |job| %>
-    <a href=<%=job_path(job)%> class="card-link">
-      <%=job_card(job, "true")%>
-    </a>
-  <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-sm-12">
+      <!---------------------------------------------------- Jobs Filters -------------------------------------------------->
+      <div class="container">
+        <div class="sidebar">
+          <form>
+            <div id="jobs_filters">
+              <div class="jobs_filters_filter">
+                <label style="font-size: 14px; font-weight:700;" for="keyword">Keyword</label>
+                <input  class="form-control fuente-letras" id="keyword" placeholder="Company, Job Title..." name="q" value="">
+              </div>
+              <div class="jobs_filters_filter">
+                <label style="font-size: 14px; font-weight:700;"  for="jobs_location">Location</label>
+                <input type="text" class="form-control fuente-letras" placeholder="City, State, Country..." name="location" value="">
+              </div>
+              <div style="padding-top:10px; padding-bottom:10px;" class="_m-t-2">
+                <input class="checkbox" type="checkbox" value="true" name="remote" id="remote">
+                <label style="font-size:12px;" for="remote">Remote OK</label>
+              </div>
+              <!---------------------------------------------------- Job Type -------------------------------------------------->
+              <div class="jobs_filters_filter" id="jobs_filters_types">
+                <label style="font-size: 14px; font-weight:700;">Job Type</label>
+                <div>
+                  <input class="checkbox" type="checkbox" value="part_time" name="types[]" id="jobs_type_part_time">
+                  <label style="font-size:12px;" for="jobs_type_part_time">Part-time</label>
+                </div>
+                <div>
+                  <input class="checkbox" type="checkbox" value="full_time" name="types[]" id="jobs_type_full_time">
+                  <label style="font-size:12px;" for="jobs_type_full_time">Full-time</label>
+                </div>
+                <div>
+                  <input class="checkbox" type="checkbox" value="freelance" name="types[]" id="jobs_type_freelance">
+                  <label style="font-size:12px;" for="jobs_type_freelance">Freelance / Contract</label>
+                </div>
+                <div>
+                  <input class="checkbox" type="checkbox" value="internship" name="types[]" id="jobs_type_internship">
+                  <label style="font-size:12px;" for="jobs_type_internship">Internship</label>
+                </div>
+              </div>
+              <!---------------------------------------------------- Skills -------------------------------------------------->
+              <div class="jobs_filters_filter" id="jobs_filters_skills">
+                  <label style="font-size: 14px; font-weight:700;">Skill</label>
+                <div>
+                  <input class="checkbox" type="checkbox" value="animation" name="skills[]" id="jobs_skill_animation">
+                  <label style="font-size:12px;" for="jobs_skill_animation">Animation</label>
+                </div>
+                <div>
+                  <input class="checkbox" type="checkbox" value="art_direction" name="skills[]" id="jobs_skill_art_direction">
+                  <label style="font-size:12px;" for="jobs_skill_art_direction">Art Direction</label>
+                </div>
+                <div>
+                  <input class="checkbox" type="checkbox" value="branding" name="skills[]" id="jobs_skill_branding">
+                  <label style="font-size:12px;" for="jobs_skill_branding">Branding</label>
+                </div>
+                <div>
+                  <input class="checkbox" type="checkbox" value="fashion" name="skills[]" id="jobs_skill_fashion">
+                  <label style="font-size:12px;" for="jobs_skill_fashion">Fashion</label>
+                </div>
+                <div>
+                  <input class="checkbox" type="checkbox" value="game_design" name="skills[]" id="jobs_skill_game_design">
+                  <label style="font-size:12px;" for="jobs_skill_game_design">Game Design</label>
+                </div>
+                <div>
+                  <input class="checkbox" type="checkbox" value="graphic_design" name="skills[]" id="jobs_skill_graphic_design">
+                  <label style="font-size:12px;" for="jobs_skill_graphic_design">Graphic Design</label>
+                </div>
+                <div>
+                  <input class="checkbox" type="checkbox" value="illustration" name="skills[]" id="jobs_skill_illustration">
+                  <label style="font-size:12px;" for="jobs_skill_illustration">Illustration</label>
+                </div>
+                <div>
+                  <input class="checkbox" type="checkbox" value="industrial_design" name="skills[]" id="jobs_skill_industrial_design">
+                  <label style="font-size:12px;" for="jobs_skill_industrial_design">Industrial Design</label>
+                </div>
+                <div>
+                  <input class="checkbox" type="checkbox" value="interaction_design" name="skills[]" id="jobs_skill_interaction_design">
+                  <label style="font-size:12px;" for="jobs_skill_interaction_design">Interaction Design</label>
+                </div>
+                <div>
+                  <input class="checkbox" type="checkbox" value="mobile" name="skills[]" id="jobs_skill_mobile">
+                  <label style="font-size:12px;" for="jobs_skill_mobile">Mobile</label>
+                </div>
+                <div>
+                  <input class="checkbox" type="checkbox" value="motion_graphics" name="skills[]" id="jobs_skill_motion_graphics">
+                  <label style="font-size:12px;" for="jobs_skill_motion_graphics">Motion Graphics</label>
+                </div>
+                <div>
+                  <input class="checkbox" type="checkbox" value="photography" name="skills[]" id="jobs_skill_photography">
+                  <label style="font-size:12px;" for="jobs_skill_photography">Photography</label>
+                </div>
+                <div>
+                  <input class="checkbox" type="checkbox" value="print" name="skills[]" id="jobs_skill_print">
+                  <label style="font-size:12px;" for="jobs_skill_print">Print</label>
+                </div>
+                <div>
+                  <input class="checkbox" type="checkbox" value="product_design" name="skills[]" id="jobs_skill_product_design">
+                  <label style="font-size:12px;" for="jobs_skill_product_design">Product Design</label>
+                </div>
+                <div>
+                  <input class="checkbox" type="checkbox" value="typography" name="skills[]" id="jobs_skill_typography">
+                  <label style="font-size:12px;" for="jobs_skill_typography">Typography</label>
+                </div>
+                <div>
+                  <input class="checkbox" type="checkbox" value="ui_ux" name="skills[]" id="jobs_skill_ui_ux">
+                  <label style="font-size:12px;" for="jobs_skill_ui_ux">UI/UX</label>
+                </div>
+                <div>
+                  <input class="checkbox" type="checkbox" value="web_design" name="skills[]" id="jobs_skill_web_design">
+                  <label style="font-size:12px;" for="jobs_skill_web_design">Web Design</label>
+                </div>
+              </div>
+              <!---------------------------------------------------- Filter buttom -------------------------------------------------->
+              <div>
+                <button type="submit" class="btn btn-dark justify-content-center align-items-center" id="jobs_filters_filter-btn">Filter</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8 col-sm-12">
+      <!---------------------------------------------------- Job Cards -------------------------------------------------->
+      <div id="jobs">
+        <% @jobs.each do |job| %>
+          <a href=<%=job_path(job)%> class="card-link">
+            <%=job_card(job, "true")%>
+          </a>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 

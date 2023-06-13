@@ -56,19 +56,36 @@ body {
     top: 50%;
 }
 
+
+
+/*************************************************** Index *******************************************/
+
+
+.sidebar {
+  background-color: #f7f7f8;
+  border-radius: 10px;
+  padding: 30px;
+}
+
 /*************************** Cards Job Preview *******************/
 
 .card.card-index{
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
 }
 
 /* Adjust logo image in mobile screens*/
+@media (max-width: 500px)  {.col-12.logo-fluid {width: 60%;}}
+@media (min-width: 500px)  {.col-12.logo-fluid {width: 60%;}}
+@media (min-width: 767px)  {.col-12.logo-fluid {width: 50%;}}
+@media (min-width: 1100px) {.col-12.logo-fluid {width: 45%;}}
+@media (min-width: 1800px) {.col-12.logo-fluid {width: 40%;}}
+
+
 @media (max-width: 500px)  {.logo-fluid {width: 100%;}}
-@media (max-width: 500px)  {.col-12 .logo-fluid {width: 60%;}}
 @media (min-width: 500px)  {.logo-fluid {width: 60%;}}
 @media (min-width: 767px)  {.logo-fluid {width: 50%;}}
-@media (min-width: 1100px) {.logo-fluid {width: 45%;}}
-@media (min-width: 1800px) {.logo-fluid {width: 40%;}}
+@media (min-width: 1100px) {.logo-fluid {width: 85%;}}
+@media (min-width: 1800px) {.logo-fluid {width: 60%;}}
 
 /* Reduce font size in mobile screens*/
 @media (max-width: 767px) {
@@ -102,6 +119,19 @@ body {
 }
 /******************************Jobs Show**************************************/
 
+
+.info-container {
+  display: flex;
+}
+.info-item {
+  background-color: rgb(228, 228, 228);
+  padding: 5px 10px 5px 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  font-size: x-small;
+}
 
 .white {
     background-color: #FFFFFF;
