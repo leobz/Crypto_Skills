@@ -18,7 +18,7 @@ class JobsTest < ApplicationSystemTestCase
     fill_in "Company", with: @job.company
     fill_in "Description", with: @job.description
     fill_in "Location", with: @job.location
-    fill_in "Salary", with: @job.salary
+    fill_in "Salary", with: @job.min_salary
     fill_in "Title", with: @job.title
     fill_in "Website", with: @job.website
     click_on "Create Job"
@@ -35,7 +35,7 @@ class JobsTest < ApplicationSystemTestCase
     fill_in "Company", with: @job.company
     fill_in "Description", with: @job.description
     fill_in "Location", with: @job.location
-    fill_in "Salary", with: @job.salary
+    fill_in "Salary", with: @job.min_salary
     fill_in "Title", with: @job.title
     fill_in "Website", with: @job.website
     click_on "Update Job"

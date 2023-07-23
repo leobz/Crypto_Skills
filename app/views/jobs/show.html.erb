@@ -59,15 +59,15 @@
         <div class="info-container">
             <div class="info-item">
                 <i class="fa fa-map-marker" aria-hidden="true"></i>
-                <span>&nbsp;&nbsp;Bellingham, WA</span>
+                <span>&nbsp;&nbsp;<%= @job.location %> </span>
             </div>
             <div class="info-item">
               <i class="fa fa-clock-o" aria-hidden="true"></i>
-              <span>&nbsp;&nbsp;Freelance / Contract</span>
+              <span>&nbsp;&nbsp;<%= @job.modality %></span>
             </div>
             <div class="info-item">
               <i class="fa fa-wifi" aria-hidden="true"></i>
-              <span>&nbsp;&nbsp;Remote OK</span>
+              <span>&nbsp;&nbsp;<%= @job.location_mode %></span>
             </div>
         </div>
         <br><br>
@@ -83,10 +83,10 @@
             <%= image_tag(@job.company_logo, class: "logo-fluid") %>
           </div>
           <h5 class="d-flex justify-content-center align-items-center"><%= @job.company%></h5>
-            <small class="d-flex justify-content-center align-items-center"> Visit website </small>
+            <a href="<%= @job.company_website%>" class="d-flex justify-content-center align-items-center"> Visit website </a>
             <br>
             <small class="d-flex text-center">
-              "We're an award-winning, full-service creative agency dedicated to creating cutting-edge video game trailers, cinematics, and more!"
+              <%= @job.company_description%>
             </small>
             <br>
             <div class="col-12 d-flex justify-content-center align-items-center d-none d-sm-block">

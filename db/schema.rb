@@ -97,14 +97,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_03_020503) do
 
   create_table "jobs", force: :cascade do |t|
     t.string "title"
+    t.integer "modality"
     t.string "description"
+    t.integer "salary_timeframe"
+    t.integer "currency"
+    t.integer "min_salary"
+    t.integer "max_salary"
     t.string "website"
-    t.string "company"
-    t.binary "company_logo"
     t.string "location"
     t.integer "location_mode"
-    t.integer "salary"
+    t.integer "skills"
     t.integer "category"
+    t.string "email"
+    t.string "company"
+    t.binary "company_logo"
+    t.string "company_description"
+    t.string "company_website"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "published", default: false

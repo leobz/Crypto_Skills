@@ -84,17 +84,17 @@ function showPreview(event) {
         </div>
         <div class="col-md-6">
           <div class="form-check form-check-inline input-form fuente-letras">
-          <%= form.radio_button :location_mode, 'ON_SITE', checked: "checked",  type: "radio", class:"form-check-input check" %> Onsite Only
+          <%= form.radio_button :location_mode, 'ON_SITE', checked: "checked",  modality: "radio", class:"form-check-input check" %> Onsite Only
           </div>
           <div class="form-check form-check-inline fuente-letras">
-            <%= form.radio_button :location_mode, 'HIBRYD', type: "radio", class: "form-check-input" %> Remote OK
+            <%= form.radio_button :location_mode, 'HIBRYD', modality: "radio", class: "form-check-input" %> Remote OK
           </div>
         </div>
       </div>
 
       <div class="input-form mx-auto w-85 text-center">
-        <%= form.label "Skills *", class: "d-block tittle-position fuente-letras" %>
-        <%= form.select :skills, ["A", "B"],{ include_blank: "- nothing selected -" }, { class: "form-control fuente-letras", required: true} %>
+        <%= form.label "Category *", class: "d-block tittle-position fuente-letras" %>
+        <%= form.select :category, ["A", "B"],{ include_blank: "- nothing selected -" }, { class: "form-control fuente-letras", required: true} %>
       </div>
 
       <div class="row">
