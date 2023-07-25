@@ -46,7 +46,7 @@ class JobsTest < ApplicationSystemTestCase
 
   test "should destroy Job" do
     visit job_url(@job)
-    click_on "Destroy this job", match: :first
+    click_on "Delete this job", match: :first
 
     assert_text "Job was successfully destroyed"
   end

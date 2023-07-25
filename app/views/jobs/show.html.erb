@@ -4,8 +4,8 @@
     <% if current_user || @job.published == false %>
       <%= back_to_jobs_button("small") %>
 
-      <%= link_to "Edit", edit_job_path(@job), class: "btn btn-dark btn-sm ms-1"%>
-      <%= button_to "Destroy", @job, method: :delete , class: "btn btn-dark btn-sm ms-1"%>
+      <%= link_to "Edit Job", edit_job_path(@job), class: "btn btn-dark btn-sm ms-1"%>
+      <%= button_to "Delete Job", @job, method: :delete , class: "btn btn-dark btn-sm ms-1"%>
     <% else %>
       <%= back_to_jobs_button %>
     <% end %>
@@ -25,11 +25,10 @@
         <% end %>
 
       <!------------------------------------ Payment Requeriment Notification ------------------------------------>
-
         <% if @job.published == false %>
           <div class="alert alert-warning" role="alert">
             <h4 class="alert-heading">Hi there!</h4>
-            This <strong>job has not been published yet</strong>. You can post it for <strong>5 USD</strong> using BTC or Lightning with the following link.
+            This <strong>job has not been published yet</strong>. You can post it for <strong>5 USD</strong> using BTC or Lightning.
             <br>
             Remember that you can  <%= link_to "edit this job", edit_job_path(@job) %>  before publishing it.
             <hr>
@@ -43,6 +42,9 @@
               <%= hidden_field_tag :job_id, @job.id %>
               <%= hidden_field_tag :company, @job.company %>
 
+              <small class="form-text text-muted">
+                You email won't be displayed. We'll send your the receipt and the link to manage your listing.
+              </small>
               <div class="row">
                   <div class="col-12 d-flex justify-content-center align-items-center" style="height: 10vh;">
                     <%= submit_tag "Publish Job", data: {turbo: "false"}, class: "btn btn-primary apply-buttom" %>
