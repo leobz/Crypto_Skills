@@ -63,7 +63,7 @@ function showPreview(event) {
         <div class="col-md-6">
           <div class="input-form mx-auto w-85 text-center">
             <%= form.label "Job Type", class: "d-block tittle-position fuente-letras" %>
-            <%= form.select :modalities, options_for_select(Job.modalities.map { |key, value| [key.humanize, key] }), {}, { class: "form-control fuente-letras" } %>
+            <%= form.select :modality, options_for_select(Job.modalities.map { |key, value| [key.humanize, key] }), {}, { class: "form-control fuente-letras" } %>
           </div>
         </div>
       </div>
@@ -174,7 +174,7 @@ function showPreview(event) {
   </div>
     
   <!------------------------------------ Button section--------------------------------------->
-  <br><br><div class="card card-form" style="padding: 2% 5% 2% 5%">
+  <br><br><div style="padding: 0 5% 0 5%">
     <div class="card-body">
       <div class="col-12 d-flex justify-content-center align-items-center" style="height: 10vh;">
         <%=
