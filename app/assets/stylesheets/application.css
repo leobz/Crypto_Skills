@@ -60,6 +60,23 @@ body {
 
 /*************************************************** Index *******************************************/
 
+.info-item-card {
+  background-color: rgb(228, 228, 228);
+  padding: 5px 10px 5px 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  font-size: x-small;
+}
+
+.btn.btn-orange  {
+  background: #FF9900;
+  border-color: #FF9900;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
 
 .sidebar {
   background-color: #f7f7f8;
@@ -119,18 +136,32 @@ body {
 }
 /******************************Jobs Show**************************************/
 
+.title {
+  color: black;
+  line-height: 1.1em;
+  letter-spacing: -0.045em;
+  font-family: "Inter",sans-serif;
+}
+
+.sub-title {
+  color: black;
+  line-height: 1.1em;
+  font-weight: bold;
+}
 
 .info-container {
   display: flex;
 }
-.info-item {
-  background-color: rgb(228, 228, 228);
+
+.info-item-show {
+  background-color: #ededee;
   padding: 5px 10px 5px 10px;
   margin-right: 10px;
   border-radius: 5px;
   display: flex;
   align-items: center;
-  font-size: x-small;
+  font-weight: 500;
+  font-size: small;
 }
 
 .white {
@@ -202,6 +233,9 @@ body {
   font-weight: 900;
 }
 
+.help-text {
+  font-size: 0.8em;
+}
 
 /*************************Company Logo Upload**********************************/
 

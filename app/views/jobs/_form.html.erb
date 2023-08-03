@@ -63,7 +63,7 @@ function showPreview(event) {
         <div class="col-md-6">
           <div class="input-form mx-auto w-85 text-center">
             <%= form.label "Job Type", class: "d-block tittle-position fuente-letras" %>
-            <%= form.select :job_type, ["Full-time", "Part-time"], {}, { class: "form-control fuente-letras" } %>
+            <%= form.select :modality, options_for_select(Job.modalities.map { |key, value| [key.humanize, key] }), {}, { class: "form-control fuente-letras" } %>
           </div>
         </div>
       </div>
@@ -71,43 +71,43 @@ function showPreview(event) {
       <div>
         <div class="input-form mx-auto w-85 text-center">
           <%= form.label "Description *",  class: "d-block tittle-position fuente-letras" %>
-          <%= form.text_area :description, class: "form-control fuente-letras field-big" %>
+          <%= form.text_area :description, class: "form-control fuente-letras field-big", required: true%>
         </div>
       </div>
 
       <div class="row">
         <div class="col-md-6">
           <div class="input-form mx-auto w-85 text-center">
-            <%= form.label "Job Location", class: "d-block tittle-position fuente-letras" %>
-            <%= form.text_field :location, placeholder: "City, State, Country...",   class: "form-control fuente-letras" %>
+            <%= form.label "Job Location *", class: "d-block tittle-position fuente-letras" %>
+            <%= form.text_field :location, placeholder: "City, State, Country...",   class: "form-control fuente-letras", required: true%>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="form-check form-check-inline input-form fuente-letras">
-          <%= form.radio_button :location_mode, 'ON_SITE', checked: "checked",  type: "radio", class:"form-check-input check" %> Onsite Only
+        <div class="col-md-6" style="padding-top: 22px;">
+          <div class="form-check form-check-inline fuente-letras" style="margin-left: 10px;">
+            <%= form.radio_button :location_mode, 'ON_SITE', checked: "checked", modality: "radio", class: "form-check-input" %> Remote OK
           </div>
-          <div class="form-check form-check-inline fuente-letras">
-            <%= form.radio_button :location_mode, 'HIBRYD', type: "radio", class: "form-check-input" %> Remote OK
+          <div class="form-check form-check-inline input-form fuente-letras" style="margin-left: 10px;">
+          <%= form.radio_button :location_mode, 'REMOTE', modality: "radio", class:"form-check-input check" %> Onsite Only
           </div>
         </div>
       </div>
 
       <div class="input-form mx-auto w-85 text-center">
-        <%= form.label "Skills *", class: "d-block tittle-position fuente-letras" %>
-        <%= form.select :skills, ["A", "B"],{ include_blank: "- nothing selected -" }, { class: "form-control fuente-letras", required: true} %>
+        <%= form.label "Category *", class: "d-block tittle-position fuente-letras" %>
+        <%= form.select :category, options_for_select(Job.categories.map { |key, value| [key.humanize, key] }) ,{ include_blank: "- nothing selected -" }, { class: "form-control fuente-letras", required: true} %>
       </div>
 
       <div class="row">
         <div class="col-md-6">
           <div class="input-form mx-auto w-85 text-center">
             <%= form.label "Salary Timeframe", class: "d-block tittle-position fuente-letras" %>
-            <%= form.select :salary_timeframe, ["Monthly", "Anually"], {}, { class: "form-control fuente-letras" } %>
+            <%= form.select :salary_timeframe, options_for_select(Job.salary_timeframes.map { |key, value| [key.humanize, key] }), {}, { class: "form-control fuente-letras" } %>
           </div>
         </div>
         <div class="col-md-6">
           <div class="input-form mx-auto w-85 text-center">
             <%= form.label "Currency", class: "d-block tittle-position fuente-letras" %>
-            <%= form.select :currency, ["USD", "ARS"], {}, { class: "form-control fuente-letras" } %>
+            <%= form.select :currency, options_for_select(Job.currencies.map { |key, value| [key, key] }), {}, { class: "form-control fuente-letras" } %>
           </div>
         </div>
       </div>
@@ -151,8 +151,8 @@ function showPreview(event) {
             <%= form.url_field :company_website, class: "form-control fuente-letras" %>
           </div>
           <div class="input-form mx-auto w-85 text-center">
-            <%= form.label "Company Description *", class: "d-block tittle-position fuente-letras" %>
-            <%= form.text_area :company_description, class: "form-control fuente-letras field-medium", required: true%>
+            <%= form.label "Company Description", class: "d-block tittle-position fuente-letras" %>
+            <%= form.text_area :company_description, class: "form-control fuente-letras field-medium"%>
           </div>
         </div>
         <div class="col-md-3">
@@ -172,23 +172,9 @@ function showPreview(event) {
       </div>
     </div>
   </div>
-
-  <!------------------------------------ Card Email Info section--------------------------------------->
-  <br><div class="card card-form" style="padding: 2% 5% 2% 5%">
-    <div class="card-body">
-      <!-------------- Title  ---------------->
-      <h4 class="form-title">Email</h4>
-
-      <div class="input-form mx-auto w-85">
-        <%= form.label "Email *", class: "d-block tittle-position fuente-letras";%>
-        <small class="form-text text-muted" style="font-size: 10px;">You email won't be displayed. We'll send your the receipt and the link to manage your listing.</small>
-        <%= form.email_field :email, class: "form-control fuente-letras", required: true%>
-      </div>
-    </div>
-  </div>
     
   <!------------------------------------ Button section--------------------------------------->
-  <br><br><div class="card card-form" style="padding: 2% 5% 2% 5%">
+  <br><br><div style="padding: 0 5% 0 5%">
     <div class="card-body">
       <div class="col-12 d-flex justify-content-center align-items-center" style="height: 10vh;">
         <%=

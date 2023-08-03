@@ -24,8 +24,8 @@ class CreateActiveStorageTables < ActiveRecord::Migration[5.2]
 
     create_table :active_storage_attachments, id: primary_key_type do |t|
       t.string     :name,     null: false
-      t.references :record,   null: false, polymorphic: true, index: false, type: foreign_key_type
-      t.references :blob,     null: false, type: foreign_key_type
+      t.references :record,   null: false, polymorphic: true, index: false, modality: foreign_key_type
+      t.references :blob,     null: false, modality: foreign_key_type
 
       if connection.supports_datetime_with_precision?
         t.datetime :created_at, precision: 6, null: false
@@ -38,7 +38,7 @@ class CreateActiveStorageTables < ActiveRecord::Migration[5.2]
     end
 
     create_table :active_storage_variant_records, id: primary_key_type do |t|
-      t.belongs_to :blob, null: false, index: false, type: foreign_key_type
+      t.belongs_to :blob, null: false, index: false, modality: foreign_key_type
       t.string :variation_digest, null: false
 
       t.index [ :blob_id, :variation_digest ], name: :index_active_storage_variant_records_uniqueness, unique: true

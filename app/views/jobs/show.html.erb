@@ -1,13 +1,9 @@
 <p></p>
-<div class="d-flex" style="margin: 0 0 1% 2%;">
+<div class="d-flex" style="margin: 0 0 1% 0;">
     <!-------------------- Show Edit/Delete Job ----------------------->
     <% if current_user || @job.published == false %>
-      <%= back_to_jobs_button("small") %>
-
-      <%= link_to "Edit", edit_job_path(@job), class: "btn btn-dark btn-sm ms-1"%>
-      <%= button_to "Destroy", @job, method: :delete , class: "btn btn-dark btn-sm ms-1"%>
-    <% else %>
-      <%= back_to_jobs_button %>
+      <%= link_to "Edit Job", edit_job_path(@job), class: "btn btn-dark btn-sm ms-1"%>
+      <%= button_to "Delete Job", @job, method: :delete , class: "btn btn-dark btn-sm ms-2"%>
     <% end %>
 </div>
 
@@ -25,11 +21,10 @@
         <% end %>
 
       <!------------------------------------ Payment Requeriment Notification ------------------------------------>
-
         <% if @job.published == false %>
           <div class="alert alert-warning" role="alert">
             <h4 class="alert-heading">Hi there!</h4>
-            This <strong>job has not been published yet</strong>. You can post it for <strong>5 USD</strong> using BTC or Lightning with the following link.
+            This <strong>job has not been published yet</strong>. You can post it for <strong>5 USD</strong> using BTC or Lightning.
             <br>
             Remember that you can  <%= link_to "edit this job", edit_job_path(@job) %>  before publishing it.
             <hr>
@@ -43,6 +38,9 @@
               <%= hidden_field_tag :job_id, @job.id %>
               <%= hidden_field_tag :company, @job.company %>
 
+              <small class="form-text text-muted">
+                You email won't be displayed. We'll send your the receipt and the link to manage your listing.
+              </small>
               <div class="row">
                   <div class="col-12 d-flex justify-content-center align-items-center" style="height: 10vh;">
                     <%= submit_tag "Publish Job", data: {turbo: "false"}, class: "btn btn-primary apply-buttom" %>
@@ -54,21 +52,25 @@
 
       <!------------------------------------ Job Details ------------------------------------------------------>
       <div class="show-description">
-        <h2><%= @job.title %></h2>
+        <h1 class="title"><%= @job.title %></h1>
         <br>
         <div class="info-container">
-            <div class="info-item">
+            <div class="info-item-show">
                 <i class="fa fa-map-marker" aria-hidden="true"></i>
-                <span>&nbsp;&nbsp;Bellingham, WA</span>
+                <span>&nbsp;&nbsp;<%= @job.location %> </span>
             </div>
-            <div class="info-item">
+            <div class="info-item-show">
               <i class="fa fa-clock-o" aria-hidden="true"></i>
-              <span>&nbsp;&nbsp;Freelance / Contract</span>
+              <span>&nbsp;&nbsp;<%= @job.modality.humanize %></span>
             </div>
-            <div class="info-item">
+            <div class="info-item-show">
               <i class="fa fa-wifi" aria-hidden="true"></i>
-              <span>&nbsp;&nbsp;Remote OK</span>
+              <span>&nbsp;&nbsp;<%= @job.location_mode.humanize %></span>
             </div>
+        </div>
+        <br>
+        <div class="col-3 d-flex justify-content-center align-items-center d-none d-sm-block">
+          <a href="<%=@job.website%>" target="_blank" class="btn btn-orange btn-orange  d-flex justify-content-center align-items-center">Apply Now</a>
         </div>
         <br><br>
         <p class="card-text", style="white-space: pre-wrap; font-size: 13px; font-weight: 400;"> <%= @job.description %></p>
@@ -82,15 +84,15 @@
           <div class="col-12 d-flex justify-content-center align-items-center">
             <%= image_tag(@job.company_logo, class: "logo-fluid") %>
           </div>
-          <h5 class="d-flex justify-content-center align-items-center"><%= @job.company%></h5>
-            <small class="d-flex justify-content-center align-items-center"> Visit website </small>
+          <h3 class="d-flex justify-content-center align-items-center sub-title"><%= @job.company%></h5>
+            <a href="<%= @job.company_website%>" class="d-flex justify-content-center align-items-center"> Visit website </a>
             <br>
             <small class="d-flex text-center">
-              "We're an award-winning, full-service creative agency dedicated to creating cutting-edge video game trailers, cinematics, and more!"
+              <%= @job.company_description%>
             </small>
             <br>
             <div class="col-12 d-flex justify-content-center align-items-center d-none d-sm-block">
-              <a href="<%=@job.website%>" target="_blank" class="btn btn-dark d-flex justify-content-center align-items-center">Apply Now</a>
+              <a href="<%=@job.website%>" target="_blank" class="btn btn-orange btn-orange  d-flex justify-content-center align-items-center">Apply Now</a>
             </div>
             <div class="d-block d-sm-none">
               <br><br>

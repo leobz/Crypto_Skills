@@ -18,7 +18,7 @@ class JobsTest < ApplicationSystemTestCase
     fill_in "Company", with: @job.company
     fill_in "Description", with: @job.description
     fill_in "Location", with: @job.location
-    fill_in "Salary", with: @job.salary
+    fill_in "Salary", with: @job.min_salary
     fill_in "Title", with: @job.title
     fill_in "Website", with: @job.website
     click_on "Create Job"
@@ -35,7 +35,7 @@ class JobsTest < ApplicationSystemTestCase
     fill_in "Company", with: @job.company
     fill_in "Description", with: @job.description
     fill_in "Location", with: @job.location
-    fill_in "Salary", with: @job.salary
+    fill_in "Salary", with: @job.min_salary
     fill_in "Title", with: @job.title
     fill_in "Website", with: @job.website
     click_on "Update Job"
@@ -46,7 +46,7 @@ class JobsTest < ApplicationSystemTestCase
 
   test "should destroy Job" do
     visit job_url(@job)
-    click_on "Destroy this job", match: :first
+    click_on "Delete this job", match: :first
 
     assert_text "Job was successfully destroyed"
   end

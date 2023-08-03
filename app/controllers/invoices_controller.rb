@@ -48,6 +48,8 @@ class InvoicesController < ApplicationController
 
     # Response
     response = http.request(request)
+    puts "Response"
+    puts(response)
     parsed_body = JSON.parse(response.body)
 
     # Save invoice

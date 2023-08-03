@@ -15,31 +15,25 @@ module JobsHelper
             content_tag(:h6, job.company, class: 'card-subtitle mb-2') +
             #***************************** Secondary *********************
             content_tag(:div, class: "info-container") do
-              concat(content_tag(:div, class: "info-item") do
+              concat(content_tag(:div, class: "info-item-card") do
                 concat tag.i(class: "fa fa-map-marker")
-                concat content_tag(:span, ".Bellingham, WA")
+                concat content_tag(:span, "." + job.location)
               end)
-              concat(content_tag(:div, class: "info-item") do
+              concat(content_tag(:div, class: "info-item-card") do
                 concat tag.i(class: "fa fa-clock-o", 'aria-hidden': true)
-                concat(content_tag(:span, ".Freelance / Contract"))
+                concat(content_tag(:span, "." + job.modality ))
               end)
-              concat(content_tag(:div, class: "info-item") do
+              concat(content_tag(:div, class: "info-item-card") do
                 concat tag.i(class: "fa fa-wifi", 'aria-hidden': true)
-                concat(content_tag(:span, ".Remote OK"))
+                concat(content_tag(:span, "." + job.location_mode))
               end)
             end +
             content_tag(:span, class: 'card-text', style: 'float: right;') do
-              content_tag(:small, "$#{job.salary ? job.salary : "------"}", class: 'text-body-secondary')
+              content_tag(:small, "$#{job.min_salary ? job.min_salary : "------"}", class: 'text-body-secondary')
             end
           end
         end
       end
-    end
-  end
-
-  def back_to_jobs_button(small = nil)
-    link_to jobs_path, class: "btn btn-dark" + (small ? ' btn-sm' : '') do
-      content_tag(:i, "", class: "fa fa-solid fa-rotate-left") + " | Back to jobs"
     end
   end
 end
