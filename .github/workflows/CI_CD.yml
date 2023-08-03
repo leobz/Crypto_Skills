@@ -1,4 +1,4 @@
-name: CI/CD counter app
+name: CI/CD app
 
 on:
   push:
@@ -12,8 +12,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: Build the docker_compose
-      run: docker-compose up -d --build
+    - name: Build the Dockerfile
+      run: make build
 
   Deploy:
     needs: build
@@ -26,10 +26,10 @@ jobs:
             PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY  }}
             HOSTNAME : ${{ secrets.HOSTNAME  }}
             USER_NAME : ${{ secrets.USER_NAME  }}
-            DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD}}
+            DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
             
         run: |
-          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+          echo "${PRIVATE_KEY}" > private_key && chmod 600 private_key
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
           
             #Now we have got the access of EC2 and we will start the deploy .
@@ -38,6 +38,5 @@ jobs:
             git fetch --all &&
             git reset --hard origin/main &&
             git pull origin main &&
-            docker login -u leobz -p ${DOCKERHUB_PASSWORD} &&
             make prod 
           '
