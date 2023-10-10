@@ -63,17 +63,3 @@
     </div>
   </body>
 </html>
-
-
-<!------------------------------------- Search Logic  ---------------------------------------->
-<script>
-  var searchInput = document.querySelector('#search-input');
-
-  searchInput.addEventListener('keydown', (event) => {
-    if (event.keyCode === 13) {
-      var searchTerm = searchInput.value;
-      var endpointUrl = `/jobs?key=${encodeURIComponent(searchTerm)}`;
-      window.location.href = endpointUrl;
-    }
-  });
-</script>
