@@ -12,13 +12,6 @@ admin = User.new(email: "admin@admin.com", password: ENV["ADMIN_PASSWORD"])
 admin.save
 
 #***************************        Jobs     ****************************
-
-def attach_company_logo(job, file_path)
-  f = File.open(file_path)
-  logo_blob = ActiveStorage::Blob.create_and_upload!(io: f, filename: 'logo.png', content_type: 'image/png')
-  job.company_logo.attach(logo_blob)
-end
-
 if Job.count == 0
   j = Job.new(
     title: "Lead Concept Artist (Retro Studios)",
@@ -34,7 +27,7 @@ if Job.count == 0
     created_at: "Thu, 27 Apr 2023 12:00:00 UTC +00:00",
     published: true
   )
-  attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/nintendo.jpg"))
+  JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/nintendo.jpg"))
   j.save
 
   j = Job.new(
@@ -52,7 +45,7 @@ if Job.count == 0
     created_at: "Thu, 27 Apr 2023 12:01:00 UTC +00:00",
     published: true
   )
-  attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/swan.png"))
+  JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/swan.png"))
   j.save
 
   j = Job.new(
@@ -69,7 +62,7 @@ if Job.count == 0
     created_at: "Thu, 27 Apr 2023 12:02:00 UTC +00:00",
     published: true
   )
-  attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+  JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
   j.save
 
   j = Job.new(
@@ -86,7 +79,7 @@ if Job.count == 0
     created_at: "Thu, 27 Apr 2023 12:02:30 UTC +00:00",
     published: true
   )
-  attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/strike.png"))
+  JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/strike.png"))
   j.save
 
   j = Job.new(
@@ -103,7 +96,7 @@ if Job.count == 0
   created_at: "Thu, 27 Apr 2023 12:03:00 UTC +00:00",
   published: true
   )
-  attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/bn.png"))
+  JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/bn.png"))
   j.save
 
   j = Job.new(
@@ -120,7 +113,7 @@ if Job.count == 0
     created_at: "Thu, 27 Apr 2023 12:04:00 UTC +00:00",
     published: true
   )
-  attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/bn.png"))
+  JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/bn.png"))
   j.save
 
 
@@ -142,7 +135,7 @@ if Job.count == 0
     published: true
   )
 
-  attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+  JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
   j.save
 
   # Seed 2
@@ -161,7 +154,7 @@ if Job.count == 0
   published: true
 )
 
-  attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+  JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
   j.save
 
   # Seed 3
@@ -180,7 +173,7 @@ if Job.count == 0
   published: true
 )
 
-  attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+  JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
   j.save
 
   # Seed 4
@@ -199,7 +192,7 @@ if Job.count == 0
   published: true
 )
 
-  attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+  JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
   j.save
 
   # Seed 5
@@ -218,7 +211,7 @@ if Job.count == 0
   published: true
 )
 
-  attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+  JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
   j.save
 
   # Seed 6
@@ -237,7 +230,7 @@ if Job.count == 0
   published: true
 )
 
-  attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+  JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
   j.save
 
   # Seed 7
@@ -256,7 +249,7 @@ if Job.count == 0
   published: true
 )
 
-  attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+  JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
   j.save
 
   # Seed 8
@@ -275,7 +268,7 @@ if Job.count == 0
   published: true
 )
 
-  attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+  JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
   j.save
 
   # Seed 9
@@ -294,7 +287,7 @@ if Job.count == 0
   published: true
 )
 
-  attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+  JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
   j.save
 
   # Seed 10
@@ -314,7 +307,7 @@ if Job.count == 0
 )
 
 
-attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
 j.save
 
 
@@ -334,7 +327,7 @@ Job.create(
   created_at: Time.now,
   published: true
 )
-attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
 j.save
 
 # Seed 2 - Categoría: COMPUTER_SCIENCE
@@ -352,7 +345,7 @@ Job.create(
   created_at: Time.now,
   published: true
 )
-attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
 j.save
 
 # Seed 3 - Categoría: ENGLISH_STUDIES
@@ -370,7 +363,7 @@ Job.create(
   created_at: Time.now,
   published: true
 )
-attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
 j.save
 
 # Seed 4 - Categoría: FINANCE
@@ -388,7 +381,7 @@ Job.create(
   created_at: Time.now,
   published: true
 )
-attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
 j.save
 
 # Seed 5 - Categoría: INFORMATION_SYSTEMS
@@ -406,7 +399,7 @@ Job.create(
   created_at: Time.now,
   published: true
 )
-attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
 j.save
 
 # Seed 6 - Categoría: ACCOUNTING
@@ -424,7 +417,7 @@ Job.create(
   created_at: Time.now,
   published: true
 )
-attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
 j.save
 
 # Seed 7 - Categoría: BUSINESS
@@ -442,7 +435,7 @@ Job.create(
   created_at: Time.now,
   published: true
 )
-attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
 j.save
 
 # Seed 8 - Categoría: BUSINESS_ADMINISTRATION
@@ -460,7 +453,7 @@ Job.create(
   created_at: Time.now,
   published: true
 )
-attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
 j.save
 
 # Seed 9 - Categoría: EDUCATION
@@ -478,7 +471,7 @@ Job.create(
   created_at: Time.now,
   published: true
 )
-attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
 j.save
 
 # Seed 10 - Categoría: MATHEMATICS
@@ -496,10 +489,10 @@ Job.create(
   created_at: Time.now,
   published: true
 )
-attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
 j.save
 
-# Seed 11 - Categoría: FHYSICS
+# Seed 11 - Categoría: PHYSICS
 Job.create(
   title: "Physicist",
   description: "Physicist position for physics research.",
@@ -510,11 +503,11 @@ Job.create(
   modality: "FULL_TIME",
   location: "On-site",
   location_mode: "ON_SITE",
-  category: "FHYSICS",
+  category: "PHYSICS",
   created_at: Time.now,
   published: true
 )
-attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
 j.save
 
 # Seed 12 - Categoría: SCIENCE
@@ -532,7 +525,7 @@ Job.create(
   created_at: Time.now,
   published: true
 )
-attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
 j.save
 
 # Seed 13 - Categoría: STATISTICS_AND_DECISION_THEORY
@@ -550,7 +543,7 @@ Job.create(
   created_at: Time.now,
   published: true
 )
-attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
 j.save
 
 # Seed 14 - Categoría: LAW
@@ -568,11 +561,11 @@ Job.create(
   created_at: Time.now,
   published: true
 )
-attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
 j.save
 
 Job.all.filter {|j| j.company_logo_attachment.nil?}.each do |j|
-  attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+  JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
   j.save
 end
 
