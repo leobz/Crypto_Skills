@@ -86,5 +86,14 @@ You can see available tasks (build, dev, prod, etc) and what they do with `make`
 To run the tests for Job Board, run the following command:
 
 ```bash
-rake test
+rspec spec
 ```
+
+## Used gems
+
+Rails, [Active Record](https://github.com/rails/rails/blob/main/activerecord/README.rdoc)
+
+Specific gems:
+- [Rspec](https://rspec.info/): Useful gem to make Test Driven Development. See a [test case example](https://github.com/leobz/job_board/spec/jobs/test_job_controller_spec.rb).
+- [ImageProcessing](https://github.com/janko/image_processing#imageprocessing): Process images with either ImageMagick/GraphicsMagick or libvips libraries. 
+- [ActiveStorage](https://github.com/rails/rails/tree/main/activestorage): Upload and reference files in cloud services like Amazon S3, Google Cloud Storage, etc.  and attach those files to Active Records. See [config file here](https://github.com/leobz/job_board/config/storage.yml) and [call example here](https://github.com/leobz/job_board/blob/ef932a0c63fbdacd848311f636dafa5e6f8e0348/app/helpers/jobs_helper.rb#L41)
