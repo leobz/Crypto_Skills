@@ -6,30 +6,26 @@ class JobsController < ApplicationController
 
   # GET /jobs or /jobs.json
   def index
-    key = params[:keyword]
-    location = params[:location]
-    remote_only = params[:remote_only]
-    category = params[:category]
-    modality = params[:modality]
+    @jobs = Job.where("published = true")
 
-
-    @jobs = Job.where("title ILIKE ? OR company ILIKE ?", "%#{key}%", "%#{key}%")
-              .where("location ILIKE ?", "%#{location}%")
-
-    if modality and modality.size > 1
-      @jobs = @jobs.filter {|j| j.modality == modality}
+    # Filters
+    if params[:modality] and params[:modality].size > 1
+      @jobs = @jobs.where(modality: params[:modality])
     end
 
-    if category and category.size > 1
-      @jobs = @jobs.filter {|j| j.category == category}
+    if params[:category] and params[:category].size > 1
+      @jobs = @jobs.where(category: params[:category])
     end
 
-    if remote_only == "on"
-      @jobs = @jobs.filter {|j| j.location_mode == "REMOTE"}
+    if params[:remote_only] == "on"
+      @jobs = @jobs.where(location_mode: "REMOTE")
     end
 
-    @jobs = @jobs.filter {|j| j.published == true}
-    @jobs.sort_by! {|j| - j.created_at.to_i}
+    @jobs = @jobs.where("title ILIKE ? OR company ILIKE ?", "%#{params[:keyword]}%", "%#{params[:keyword]}%")
+    @jobs = @jobs.where("location ILIKE ?", "%#{params[:location]}%")
+
+    # Sorting
+    @jobs.order(created_at: :asc)
   end
 
   # GET /jobs/1 or /jobs/1.json
