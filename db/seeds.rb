@@ -12,13 +12,6 @@ admin = User.new(email: "admin@admin.com", password: ENV["ADMIN_PASSWORD"])
 admin.save
 
 #***************************        Jobs     ****************************
-
-def attach_company_logo(job, file_path)
-  f = File.open(file_path)
-  logo_blob = ActiveStorage::Blob.create_and_upload!(io: f, filename: 'logo.png', content_type: 'image/png')
-  job.company_logo.attach(logo_blob)
-end
-
 if Job.count == 0
   j = Job.new(
     title: "Lead Concept Artist (Retro Studios)",
@@ -27,14 +20,14 @@ if Job.count == 0
     company: "Nintendo",
     company_website: "https://strike.me/",
     company_description: "Hi! We're an award-winning, full-service creative agency dedicated to creating cutting-edge video game trailers, cinematics, and more!",
-    modality: "FREELANCE",
+    modality: "INTERNSHIP",
     location: "Austin, TX",
     location_mode: "REMOTE",
     min_salary: 70000,
     created_at: "Thu, 27 Apr 2023 12:00:00 UTC +00:00",
     published: true
   )
-  attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/nintendo.jpg"))
+  JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/nintendo.jpg"))
   j.save
 
   j = Job.new(
@@ -52,7 +45,7 @@ if Job.count == 0
     created_at: "Thu, 27 Apr 2023 12:01:00 UTC +00:00",
     published: true
   )
-  attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/swan.png"))
+  JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/swan.png"))
   j.save
 
   j = Job.new(
@@ -63,13 +56,13 @@ if Job.count == 0
     company: "Spiral",
     company_website: "https://strike.me/",
     company_description: "Hi! We're an award-winning, full-service creative agency dedicated to creating cutting-edge video game trailers, cinematics, and more!",
-    modality: "FREELANCE",
+    modality: "PART_TIME",
     location: "Remote",
     location_mode: "REMOTE",
     created_at: "Thu, 27 Apr 2023 12:02:00 UTC +00:00",
     published: true
   )
-  attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+  JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
   j.save
 
   j = Job.new(
@@ -80,13 +73,13 @@ if Job.count == 0
     company: "Strike",
     company_website: "https://strike.me/",
     company_description: "Hi! We're an award-winning, full-service creative agency dedicated to creating cutting-edge video game trailers, cinematics, and more!",
-    modality: "FREELANCE",
+    modality: "FULL_TIME",
     location: "El Salvador",
     location_mode: "REMOTE",
     created_at: "Thu, 27 Apr 2023 12:02:30 UTC +00:00",
     published: true
   )
-  attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/strike.png"))
+  JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/strike.png"))
   j.save
 
   j = Job.new(
@@ -103,7 +96,7 @@ if Job.count == 0
   created_at: "Thu, 27 Apr 2023 12:03:00 UTC +00:00",
   published: true
   )
-  attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/bn.png"))
+  JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/bn.png"))
   j.save
 
   j = Job.new(
@@ -120,6 +113,460 @@ if Job.count == 0
     created_at: "Thu, 27 Apr 2023 12:04:00 UTC +00:00",
     published: true
   )
-  attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/bn.png"))
+  JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/bn.png"))
   j.save
+
+
+  #####################     CHAT GTP  ######################
+
+  # Seed 1
+  j = Job.create(
+    title: "Front-end Developer",
+    description: "Front-end developer position.",
+    website: "https://example.com/front-end-dev",
+    company: "TechCo",
+    company_website: "https://techco.com/",
+    company_description: "TechCo is a leading technology company.",
+    modality: "FULL_TIME",
+    location: "On-site",
+    location_mode: "ON_SITE",
+    category: "COMPUTER_SCIENCE",
+    created_at: Time.now,
+    published: true
+  )
+
+  JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+  j.save
+
+  # Seed 2
+  j = Job.create(
+  title: "Content Writer",
+  description: "Content writer job opportunity.",
+  website: "https://example.com/content-writer",
+  company: "Writers Inc.",
+  company_website: "https://writersinc.com/",
+  company_description: "Writers Inc. specializes in content creation.",
+  modality: "PART_TIME",
+  location: "Remote",
+  location_mode: "REMOTE",
+  category: "ENGLISH_STUDIES",
+  created_at: Time.now,
+  published: true
+)
+
+  JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+  j.save
+
+  # Seed 3
+  j = Job.create(
+  title: "Financial Analyst",
+  description: "Financial analyst position available.",
+  website: "https://example.com/financial-analyst",
+  company: "FinancePros",
+  company_website: "https://financepros.com/",
+  company_description: "FinancePros offers financial services.",
+  modality: "FULL_TIME",
+  location: "Hybrid",
+  location_mode: "HYBRID",
+  category: "FINANCE",
+  created_at: Time.now,
+  published: true
+)
+
+  JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+  j.save
+
+  # Seed 4
+  j = Job.create(
+  title: "Data Scientist Intern",
+  description: "Data scientist intern opportunity.",
+  website: "https://example.com/data-scientist-intern",
+  company: "TechGenius",
+  company_website: "https://techgenius.com/",
+  company_description: "TechGenius is a tech company.",
+  modality: "INTERNSHIP",
+  location: "Remote",
+  location_mode: "REMOTE",
+  category: "INFORMATION_SYSTEMS",
+  created_at: Time.now,
+  published: true
+)
+
+  JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+  j.save
+
+  # Seed 5
+  j = Job.create(
+  title: "Accountant",
+  description: "Accountant position available.",
+  website: "https://example.com/accountant",
+  company: "Numbers Inc.",
+  company_website: "https://numbersinc.com/",
+  company_description: "Numbers Inc. provides accounting services.",
+  modality: "FULL_TIME",
+  location: "On-site",
+  location_mode: "ON_SITE",
+  category: "ACCOUNTING",
+  created_at: Time.now,
+  published: true
+)
+
+  JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+  j.save
+
+  # Seed 6
+  j = Job.create(
+  title: "Marketing Specialist",
+  description: "Marketing specialist job opening.",
+  website: "https://example.com/marketing-specialist",
+  company: "MarketMasters",
+  company_website: "https://marketmasters.com/",
+  company_description: "MarketMasters excels in marketing.",
+  modality: "PART_TIME",
+  location: "Remote",
+  location_mode: "REMOTE",
+  category: "BUSINESS",
+  created_at: Time.now,
+  published: true
+)
+
+  JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+  j.save
+
+  # Seed 7
+  j = Job.create(
+  title: "Teacher Assistant",
+  description: "Teacher assistant position.",
+  website: "https://example.com/teacher-assistant",
+  company: "EduLearn",
+  company_website: "https://edulearn.com/",
+  company_description: "EduLearn is an education company.",
+  modality: "PART_TIME",
+  location: "On-site",
+  location_mode: "ON_SITE",
+  category: "EDUCATION",
+  created_at: Time.now,
+  published: true
+)
+
+  JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+  j.save
+
+  # Seed 8
+  j = Job.create(
+  title: "Math Tutor",
+  description: "Math tutor needed.",
+  website: "https://example.com/math-tutor",
+  company: "MathMasters",
+  company_website: "https://mathmasters.com/",
+  company_description: "MathMasters specializes in math education.",
+  modality: "PART_TIME",
+  location: "Hybrid",
+  location_mode: "HYBRID",
+  category: "MATHEMATICS",
+  created_at: Time.now,
+  published: true
+)
+
+  JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+  j.save
+
+  # Seed 9
+  j = Job.create(
+  title: "Sales Representative",
+  description: "Sales representative position.",
+  website: "https://example.com/sales-representative",
+  company: "SalesForce",
+  company_website: "https://salesforce.com/",
+  company_description: "SalesForce is a sales company.",
+  modality: "FULL_TIME",
+  location: "Remote",
+  location_mode: "REMOTE",
+  category: "BUSINESS_ADMINISTRATION",
+  created_at: Time.now,
+  published: true
+)
+
+  JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+  j.save
+
+  # Seed 10
+  j = Job.create(
+  title: "Research Scientist",
+  description: "Research scientist job opportunity.",
+  website: "https://example.com/research-scientist",
+  company: "SciTech",
+  company_website: "https://scitech.com/",
+  company_description: "SciTech conducts scientific research.",
+  modality: "FULL_TIME",
+  location: "On-site",
+  location_mode: "ON_SITE",
+  category: "SCIENCE",
+  created_at: Time.now,
+  published: true
+)
+
+
+JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+j.save
+
+
+
+# Seed 1 - Categoría: ART
+Job.create(
+  title: "Graphic Designer",
+  description: "Graphic designer position for creative projects.",
+  website: "https://example.com/graphic-designer",
+  company: "DesignStudio",
+  company_website: "https://designstudio.com/",
+  company_description: "DesignStudio specializes in graphic design.",
+  modality: "FULL_TIME",
+  location: "On-site",
+  location_mode: "ON_SITE",
+  category: "ART",
+  created_at: Time.now,
+  published: true
+)
+JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+j.save
+
+# Seed 2 - Categoría: COMPUTER_SCIENCE
+Job.create(
+  title: "Software Engineer",
+  description: "Software engineer position for coding projects.",
+  website: "https://example.com/software-engineer",
+  company: "TechSolutions",
+  company_website: "https://techsolutions.com/",
+  company_description: "TechSolutions offers software solutions.",
+  modality: "FULL_TIME",
+  location: "Hybrid",
+  location_mode: "HYBRID",
+  category: "COMPUTER_SCIENCE",
+  created_at: Time.now,
+  published: true
+)
+JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+j.save
+
+# Seed 3 - Categoría: ENGLISH_STUDIES
+Job.create(
+  title: "English Language Instructor",
+  description: "English language instructor needed for teaching.",
+  website: "https://example.com/english-instructor",
+  company: "LanguageMasters",
+  company_website: "https://languagemasters.com/",
+  company_description: "LanguageMasters specializes in language education.",
+  modality: "PART_TIME",
+  location: "Remote",
+  location_mode: "REMOTE",
+  category: "ENGLISH_STUDIES",
+  created_at: Time.now,
+  published: true
+)
+JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+j.save
+
+# Seed 4 - Categoría: FINANCE
+Job.create(
+  title: "Financial Advisor",
+  description: "Financial advisor position for financial planning.",
+  website: "https://example.com/financial-advisor",
+  company: "FinancePro",
+  company_website: "https://financepro.com/",
+  company_description: "FinancePro provides financial advice.",
+  modality: "FULL_TIME",
+  location: "On-site",
+  location_mode: "ON_SITE",
+  category: "FINANCE",
+  created_at: Time.now,
+  published: true
+)
+JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+j.save
+
+# Seed 5 - Categoría: INFORMATION_SYSTEMS
+Job.create(
+  title: "Database Administrator",
+  description: "Database administrator position for managing databases.",
+  website: "https://example.com/database-administrator",
+  company: "DataTech",
+  company_website: "https://datatech.com/",
+  company_description: "DataTech specializes in data management.",
+  modality: "FULL_TIME",
+  location: "Hybrid",
+  location_mode: "HYBRID",
+  category: "INFORMATION_SYSTEMS",
+  created_at: Time.now,
+  published: true
+)
+JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+j.save
+
+# Seed 6 - Categoría: ACCOUNTING
+Job.create(
+  title: "Accountant",
+  description: "Accountant position available for financial accounting.",
+  website: "https://example.com/accountant",
+  company: "Numbers Inc.",
+  company_website: "https://numbersinc.com/",
+  company_description: "Numbers Inc. provides accounting services.",
+  modality: "FULL_TIME",
+  location: "On-site",
+  location_mode: "ON_SITE",
+  category: "ACCOUNTING",
+  created_at: Time.now,
+  published: true
+)
+JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+j.save
+
+# Seed 7 - Categoría: BUSINESS
+Job.create(
+  title: "Business Analyst",
+  description: "Business analyst job opportunity for analysis.",
+  website: "https://example.com/business-analyst",
+  company: "BizInsights",
+  company_website: "https://bizinsights.com/",
+  company_description: "BizInsights specializes in business analysis.",
+  modality: "FULL_TIME",
+  location: "On-site",
+  location_mode: "ON_SITE",
+  category: "BUSINESS",
+  created_at: Time.now,
+  published: true
+)
+JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+j.save
+
+# Seed 8 - Categoría: BUSINESS_ADMINISTRATION
+Job.create(
+  title: "Administrative Assistant",
+  description: "Administrative assistant position for office tasks.",
+  website: "https://example.com/administrative-assistant",
+  company: "OfficePros",
+  company_website: "https://officepros.com/",
+  company_description: "OfficePros offers office management services.",
+  modality: "PART_TIME",
+  location: "Remote",
+  location_mode: "REMOTE",
+  category: "BUSINESS_ADMINISTRATION",
+  created_at: Time.now,
+  published: true
+)
+JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+j.save
+
+# Seed 9 - Categoría: EDUCATION
+Job.create(
+  title: "Math Teacher",
+  description: "Math teacher needed for teaching mathematics.",
+  website: "https://example.com/math-teacher",
+  company: "EduLearn",
+  company_website: "https://edulearn.com/",
+  company_description: "EduLearn is an education company.",
+  modality: "FULL_TIME",
+  location: "On-site",
+  location_mode: "ON_SITE",
+  category: "EDUCATION",
+  created_at: Time.now,
+  published: true
+)
+JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+j.save
+
+# Seed 10 - Categoría: MATHEMATICS
+Job.create(
+  title: "Mathematician",
+  description: "Mathematician position for mathematical research.",
+  website: "https://example.com/mathematician",
+  company: "MathMinds",
+  company_website: "https://mathminds.com/",
+  company_description: "MathMinds specializes in mathematical research.",
+  modality: "PART_TIME",
+  location: "Hybrid",
+  location_mode: "HYBRID",
+  category: "MATHEMATICS",
+  created_at: Time.now,
+  published: true
+)
+JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+j.save
+
+# Seed 11 - Categoría: PHYSICS
+Job.create(
+  title: "Physicist",
+  description: "Physicist position for physics research.",
+  website: "https://example.com/physicist",
+  company: "PhysicsLab",
+  company_website: "https://physicslab.com/",
+  company_description: "PhysicsLab conducts physics research.",
+  modality: "FULL_TIME",
+  location: "On-site",
+  location_mode: "ON_SITE",
+  category: "PHYSICS",
+  created_at: Time.now,
+  published: true
+)
+JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+j.save
+
+# Seed 12 - Categoría: SCIENCE
+Job.create(
+  title: "Lab Technician",
+  description: "Lab technician position for scientific experiments.",
+  website: "https://example.com/lab-technician",
+  company: "SciTech Labs",
+  company_website: "https://scitechlabs.com/",
+  company_description: "SciTech Labs specializes in scientific research.",
+  modality: "PART_TIME",
+  location: "Remote",
+  location_mode: "REMOTE",
+  category: "SCIENCE",
+  created_at: Time.now,
+  published: true
+)
+JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+j.save
+
+# Seed 13 - Categoría: STATISTICS_AND_DECISION_THEORY
+Job.create(
+  title: "Statistician",
+  description: "Statistician position for statistical analysis.",
+  website: "https://example.com/statistician",
+  company: "StatsTech",
+  company_website: "https://statstech.com/",
+  company_description: "StatsTech specializes in statistical analysis.",
+  modality: "FULL_TIME",
+  location: "Hybrid",
+  location_mode: "HYBRID",
+  category: "STATISTICS_AND_DECISION_THEORY",
+  created_at: Time.now,
+  published: true
+)
+JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+j.save
+
+# Seed 14 - Categoría: LAW
+Job.create(
+  title: "Legal Counsel",
+  description: "Legal counsel position for legal matters.",
+  website: "https://example.com/legal-counsel",
+  company: "LegalSolutions",
+  company_website: "https://legalsolutions.com/",
+  company_description: "LegalSolutions provides legal services.",
+  modality: "FULL_TIME",
+  location: "On-site",
+  location_mode: "ON_SITE",
+  category: "LAW",
+  created_at: Time.now,
+  published: true
+)
+JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+j.save
+
+Job.all.filter {|j| j.company_logo_attachment.nil?}.each do |j|
+  JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_logos/spiral.png"))
+  j.save
+end
+
 end

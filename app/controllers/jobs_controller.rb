@@ -6,10 +6,26 @@ class JobsController < ApplicationController
 
   # GET /jobs or /jobs.json
   def index
-    key = "%#{params[:key]}%"
-    @jobs = Job.where("UPPER(title) LIKE UPPER(?) OR UPPER(description) LIKE UPPER(?)", key, key)
-    @jobs = @jobs.filter {|j| j.published == true}
-    @jobs.sort_by! {|j| - j.created_at.to_i}
+    @jobs = Job.where("published = true")
+
+    # Filters
+    if params[:modality] and params[:modality].size > 1
+      @jobs = @jobs.where(modality: params[:modality])
+    end
+
+    if params[:category] and params[:category].size > 1
+      @jobs = @jobs.where(category: params[:category])
+    end
+
+    if params[:remote_only] == "on"
+      @jobs = @jobs.where(location_mode: "REMOTE")
+    end
+
+    @jobs = @jobs.where("title ILIKE ? OR company ILIKE ?", "%#{params[:keyword]}%", "%#{params[:keyword]}%")
+    @jobs = @jobs.where("location ILIKE ?", "%#{params[:location]}%")
+
+    # Sorting
+    @jobs.order(created_at: :asc)
   end
 
   # GET /jobs/1 or /jobs/1.json

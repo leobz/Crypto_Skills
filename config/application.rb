@@ -20,8 +20,7 @@ module JobBoard
     config.load_defaults 7.0
 
     # Host
-    config.hosts << "frontend"
-    config.hosts << "gigs.bitcoinnews.com"
+    config.hosts << "www.example.com"
     config.hosts << ENV['MY_HOST'] || "bitcoinnews.com.ar"
     config.x.app.my_host = ENV['MY_HOST'] || "bitcoinnews.com.ar"
 

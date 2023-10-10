@@ -36,4 +36,11 @@ module JobsHelper
       end
     end
   end
+
+  # Persist an image as company_logo in a Job
+  def self.attach_company_logo(job, image_path)
+    f = File.open(image_path)
+    logo_blob = ActiveStorage::Blob.create_and_upload!(io: f, filename: 'logo.png', content_type: 'image/png')
+    job.company_logo.attach(logo_blob)
+  end
 end
