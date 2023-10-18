@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :candidates
   root :to => "jobs#index"
 
   get "log_out" => "sessions#destroy", :as => "log_out"
