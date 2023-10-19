@@ -50,6 +50,22 @@
             </li>
           </ul>
         </div>
+
+        <div class="dropdown" style="margin-right: 10px">
+          <button class="btn btn-outline-light" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa fa-user" style="color:white;"></i>&nbspCandidate
+          </button>
+          <ul class="dropdown-menu">
+            <% if candidate_signed_in? %>
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><%= link_to 'Sign out', destroy_candidate_session_path, class:"dropdown-item", data: {turbo_method: :delete} %></li>
+            <% else %>
+              <li><a class="dropdown-item" href="<%=new_candidate_session_path%>">Log in</a></li>
+              <li><a class="dropdown-item" href="<%=new_candidate_registration_path%>">Sign up</a></li>
+            <% end %>
+          </ul>
+        </div>
+
         <div class="ms-auto">
           <a href="<%=new_job_path%>" class="btn btn-outline-light">Post Job</a>
         </div>
