@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   root :to => "jobs#index"
 
-  get "log_out" => "sessions#destroy", :as => "log_out"
-  get "log_in" => "sessions#new", :as => "log_in"
+  get "admin/log_out" => "admin_sessions#destroy", :as => "log_out"
+  get "admin/log_in" => "admin_sessions#new", :as => "log_in"
 
-  resources :sessions
+  resources :admin_sessions
   resources :jobs
   resources :companies
 
