@@ -19,6 +19,10 @@ ADMIN_PASSWORD: "your_admin_password"
 API_KEY: "open_node_api_key"
 OPEN_NODE_URL: "https://api.opennode.com/v1/charges"
 MY_HOST: "deploy_domain_who_is_going_to_be_requested_by_the_open_node_webhook"
+
+# Mail config
+MAIL_USERNAME: "your_email"
+MAIL_PASSWORD: "your_email_password"
 ```
 
 You can obtain an API key by signing up for an account on OpenNode. See [open node documentation](https://developers.opennode.com/docs/creating-a-charge)

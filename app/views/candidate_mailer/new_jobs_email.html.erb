@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <!------------------------------------- Boostrap CSS  ---------------------------------------->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <!------------------------------------- Awesome Icons  ---------------------------------------->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+
+  <body>
+     
+    <!------------------------------------- Boostrap JS  ---------------------------------------->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+
+    <h1>Top job picks for you!</h1>
+
+    <p>Thanks for joining and have a great day &#128640;</p>
+
+    <div id="jobs" style="margin-left: 2%; margin-right: 2%;">
+        <% @jobs.each do |job| %>
+            <a href=<%=job_url(job)%> class="card-link">
+            <%=job_card(job, "true")%>
+            </a>
+        <% end %>
+    </div>
+  </body>
+
+  <style>
+    .info-item-card {
+      background-color: rgb(228, 228, 228);
+      padding: 5px 10px 5px 10px;
+      margin-right: 10px;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      font-size: x-small;
+    }
+
+    .card.card-index{box-shadow: 2px 2px 2px 2px rgba(1, 1, 1, 0.25);}
+
+    .col-12.logo-fluid {width: 100px;}
+    .logo-fluid {width: 100px;}
+
+    .info-container {display: flex;}
+
+    .card-title{
+      font-style: normal;
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .card-link{
+        text-decoration: none;
+        margin-bottom: 5px;
+    }
+  </style>
+</html>
