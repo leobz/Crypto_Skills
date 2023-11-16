@@ -16,7 +16,7 @@ class NotificationJob < ActiveJob::Base
       keyword = alert.keywords.first
       jobs = Job.where("title ILIKE ? OR company ILIKE ?", "%#{keyword}%", "%#{keyword}%")
 
-      CandidateMailer.with(candidate: candidate, jobs: jobs).new_jobs_email.deliver_now
+      CandidateMailer.with(candidate: candidate, jobs: jobs).new_jobs_email
     end
   end
   
