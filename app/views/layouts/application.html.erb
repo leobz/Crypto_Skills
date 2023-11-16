@@ -57,7 +57,7 @@
           </button>
           <ul class="dropdown-menu">
             <% if candidate_signed_in? %>
-              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><a class="dropdown-item" href="<%=candidates_profile_path%>">Profile</a></li>
               <li><%= link_to 'Sign out', destroy_candidate_session_path, class:"dropdown-item", data: {turbo_method: :delete} %></li>
             <% else %>
               <li><a class="dropdown-item" href="<%=new_candidate_session_path%>">Log in</a></li>

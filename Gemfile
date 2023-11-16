@@ -78,3 +78,5 @@ group :test do
   gem "webdrivers"
   gem "rspec-rails"
 end
+
+gem "bootstrap-email", "~> 1.4"

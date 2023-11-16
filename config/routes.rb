@@ -8,6 +8,12 @@ Rails.application.routes.draw do
   resources :admin_sessions
   resources :jobs
   resources :companies
+  resources :alerts
+
+  get "/candidates/profile" => "candidates#profile"
+
+  post "/alerts/create" => "alerts#create"
+  delete "/alerts/:id" => "alerts#destroy"
 
   post '/invoices/create', to: 'invoices#create'
   post '/invoices/webhook', to: 'invoices#webhook'
