@@ -6,7 +6,7 @@ class Job < ApplicationRecord
     enum currency: [:USD, :EUR, :GBP, :AUD, :CAD, :NZD, :ARS, :BTC]
     enum category: [:ART, :COMPUTER_SCIENCE, :ENGLISH_STUDIES,
 		:FINANCE, :INFORMATION_SYSTEMS, :ACCOUNTING, :BUSINESS, :BUSINESS_ADMINISTRATION,
-	 	:EDUCATION, :MATHEMATICS, :PHYSICS, :SCIENCE, :STATISTICS_AND_DECISION_THEORY, :LAW, :OTHER]
+	 	:EDUCATION, :MATHEMATICS, :PHYSICS, :SCIENCE, :STATISTICS, :LAW, :OTHER]
     has_one_attached :company_logo
     has_many :invoice
     # Uncomment if you use companies table
