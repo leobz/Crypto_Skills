@@ -89,4 +89,11 @@ Rails.application.configure do
     open_timeout:    5,
     read_timeout:    5 }
 
+
+  ################################### Generators ######################################
+  config.generators do |g|
+    # Set default testing framework
+    g.test_framework :rspec, fixture: false
+    g.fallbacks[:rspec] = :test_unit
+  end
 end
