@@ -80,3 +80,5 @@ group :test do
 end
 
 gem "bootstrap-email", "~> 1.4"
+
+gem "sidekiq", "~> 7.2"
