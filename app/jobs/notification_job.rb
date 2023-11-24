@@ -13,10 +13,10 @@ class NotificationJob < ActiveJob::Base
     def notify_new_jobs(candidate)
       candidate = Candidate.all.last
       alert = Alert.where(user_id: candidate.id).first
-      keyword = alert.keywords.first
-      jobs = Job.where("title ILIKE ? OR company ILIKE ?", "%#{keyword}%", "%#{keyword}%")
+      #keyword = alert.keywords.first
+      #jobs = Job.where("title ILIKE ? OR company ILIKE ?", "%#{keyword}%", "%#{keyword}%")
 
-      CandidateMailer.with(candidate: candidate, jobs: jobs).new_jobs_email
+      #CandidateMailer.with(candidate: candidate, jobs: jobs).new_jobs_email
     end
   end
   
