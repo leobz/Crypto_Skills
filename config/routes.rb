@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
+  # Defines the root path route ("/")
+  # root "articles#index"
+
   devise_for :candidates
   root :to => "jobs#index"
 
@@ -17,8 +22,10 @@ Rails.application.routes.draw do
 
   post '/invoices/create', to: 'invoices#create'
   post '/invoices/webhook', to: 'invoices#webhook'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+
+  require 'sidekiq/web'
+  Rails.application.routes.draw do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 end

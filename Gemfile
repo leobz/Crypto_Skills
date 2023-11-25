@@ -82,3 +82,5 @@ end
 gem "bootstrap-email", "~> 1.4"
 
 gem "sidekiq", "~> 7.2"
+
+gem "sidekiq-cron", "~> 1.11"
