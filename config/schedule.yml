@@ -1,0 +1,4 @@
+new_jobs_notification_job:
+  cron: "5 7 * * *"
+  class: "NewJobsNotificationJob"
+  queue: default
