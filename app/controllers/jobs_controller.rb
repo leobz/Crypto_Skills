@@ -23,9 +23,9 @@ class JobsController < ApplicationController
 
     @jobs = @jobs.where("title ILIKE ? OR company ILIKE ?", "%#{params[:keyword]}%", "%#{params[:keyword]}%")
     @jobs = @jobs.where("location ILIKE ?", "%#{params[:location]}%")
+    @jobs = @jobs.order("created_at DESC")
 
-    # Sorting
-    @jobs.order(created_at: :asc)
+    @jobs
   end
 
   # GET /jobs/1 or /jobs/1.json
