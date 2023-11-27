@@ -45,7 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_09_224449) do
   create_table "alerts", force: :cascade do |t|
     t.string "user_id"
     t.integer "frequency"
-    t.string "keywords", default: [], array: true
+    t.string "keyword"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

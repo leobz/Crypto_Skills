@@ -3,9 +3,9 @@
 one:
   user_id: MyString
   frequency: 1
-  keywords: MyString
+  keyword: MyString
 
 two:
   user_id: MyString
   frequency: 1
-  keywords: MyString
+  keyword: MyString

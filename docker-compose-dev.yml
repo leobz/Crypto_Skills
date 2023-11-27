@@ -12,6 +12,12 @@ services:
     volumes:
       - ./db-data:/var/lib/postgresql/data
 
+  job_board_redis:
+    image: redis:alpine3.18
+    restart: always
+    ports:
+      - '6379:6379'
+
 volumes:
   db-data:
     driver: local

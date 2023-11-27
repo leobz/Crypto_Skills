@@ -35,13 +35,7 @@ class AlertsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def alert_params        
-        keywords = params.fetch(:keywords)
-
-        if !(keywords.class == Array)
-           params.merge!({keywords: keywords.split(',')})
-        end
-
-        {user_id: params.fetch(:user_id), keywords: params.fetch(:keywords), frequency: params.fetch(:frequency)}
+        {user_id: params.fetch(:user_id), keyword: params.fetch(:keyword), frequency: params.fetch(:frequency)}
     end
 end
   

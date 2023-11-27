@@ -30,10 +30,11 @@ Job Board is a platform for posting job openings and processing payments using B
 | [Active Storage](https://github.com/rails/rails/tree/main/activestorage) | Upload and reference files in cloud services and attach those files to Active Records. | Persistence                             |
 | [Image Proccesing](https://github.com/janko/image_processing)            | High-level image processing wrapper        | Persistence                             |
 | [Ruby Postgres](https://github.com/ged/ruby-pg)                          | A PostgreSQL client library for Ruby       | Persistence                             |
-| [Devise](https://github.com/heartcombo/devise)                           | Flexible authentication solution for Rails with Warden. | Authentication                         |
-| [Bcrypt](https://github.com/bcrypt-ruby/bcrypt-ruby)                     | Binding for the OpenBSD bcrypt() password hashing function | Authentication                         |
-| [Rspec](https://github.com/rspec/rspec-rails)                            | Testing Library                            | Testing / TDD                           |
-| [Minitest](https://github.com/minitest/minitest)                         | Testing Library                            | Testing / TDD                           |
+| [Sidekiq](https://github.com/sidekiq/sidekiq)                            | Efficient background processing for Ruby   | Scheduled jobs                          |
+| [Sidekiq Cron](https://github.com/sidekiq-cron/sidekiq-cron)             | Scheduler / Cron for Sidekiq jobs          | Scheduled jobs                          |
+| [Devise](https://github.com/heartcombo/devise)                           | Flexible authentication solution for Rails with Warden. | Authentication             |
+| [Bcrypt](https://github.com/bcrypt-ruby/bcrypt-ruby)                     | Binding for the OpenBSD bcrypt() password hashing function | Authentication          |
+| [Rspec](https://github.com/rspec/rspec-rails)                            | Testing Library                            | [Testing](spec/jobs/test_job_controller_spec.rb) |
 | [Action Mailer](https://github.com/rails/rails/tree/main/actionmailer)   | Framework for designing email service layers: design, testing and deliver emails | Email                                |
 | [Bootstrap Email](https://github.com/bootstrap-email/bootstrap-email)    | Bootstrap stylesheet, compiler, and inliner for responsive and consistent emails with the Bootstrap | Email                                |
 | [Rack CORS](https://github.com/cyu/rack-cors)                            | Rack Middleware for handling Cross-Origin Resource Sharing (CORS) | Allow external requests from https://bitcoinnews.com |
