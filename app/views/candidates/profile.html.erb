@@ -68,7 +68,7 @@
                 <td><%= alert.frequency  %></td>
                 <td><%= time_ago_in_words alert.created_at %></td>
                 <td>
-                    <%= button_to "Delete", alert , method: :delete,  data: {turbo_method: :delete, turbo_confirm: "Are you sure?" } , class: "btn btn-link btn-sm "%>
+                    <%= button_to "Delete", alert , method: :delete, class: "btn btn-link btn-sm "%>
                 </td>
             <% end %>
             </tr>
