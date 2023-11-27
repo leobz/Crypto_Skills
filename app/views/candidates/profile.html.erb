@@ -1,47 +1,64 @@
 
-<%= form_with(model: alert, :html => { :style => "background:transparent;" }, url: "/alerts/create") do |form| %>
-  <!------------------------------------ Card Job info section--------------------------------------->
-  <div class="card card-form" style="margin: 2% 5% 2% 5%;">
-    <div class="card-body">
-      <!-------------- Title  ---------------->
-      <h4 class="form-title">New Alert</h4>
+<div class="form-popup" id="newAlertForm">
+    <%= form_with(model: alert, :html => { :style => "background:transparent;" }, url: "/alerts/create") do |form| %>
 
-      <p>Create alerts and receive Notifications to your email</p>
-      <div>
-        <%= hidden_field_tag :user_id, current_candidate.id %>
+    <!------------------------------------ Card Job info section--------------------------------------->
+    <div class="card card-form" style="margin: 2% 5% 2% 5%;">
+        <div class="card-body">
 
-        <div class="input-form mx-auto w-85 text-center">
-            <%= form.label "frequency", class: "d-block tittle-position fuente-letras" %>
-            <%= form.select :frequency, options_for_select(Alert.frequencies.map { |key, value| [key.humanize, key] }), {}, { class: "form-control fuente-letras" } %>
+        <!----------- Close button --------->
+        <div style="position: absolute; right:10px; top:10px; z-index: 10;">
+            <button class="btn btn-danger btn-sm" type="button" onclick="closeForm()">
+                <i class="fa fa-solid fa-times"></i>
+            </button>
         </div>
 
-        <div class="input-form mx-auto w-85 text-center">
-            <%= form.label "keyword", class: "d-block tittle-position fuente-letras" %>
-            <%= form.text_field :keyword, class: "form-control fuente-letras", required: true %>
+        <!-------------- Title  ---------------->
+        <h4 class="form-title">New Alert</h4>
+
+        <div>
+            <%= hidden_field_tag :user_id, current_candidate.id %>
+
+            <div class="input-form mx-auto w-85 text-center">
+                <%= form.label "frequency", class: "d-block tittle-position fuente-letras" %>
+                <%= form.select :frequency, options_for_select(Alert.frequencies.map { |key, value| [key.humanize, key] }), {}, { class: "form-control fuente-letras" } %>
+            </div>
+
+            <div class="input-form mx-auto w-85 text-center">
+                <%= form.label "keyword", class: "d-block tittle-position fuente-letras" %>
+                <%= form.text_field :keyword, class: "form-control fuente-letras", required: true %>
+            </div>
+
+            <small class="form-text text-muted">
+                Enter keyword related to your search
+            </small>
+            </div>
         </div>
-
-        <small class="form-text text-muted">
-            Enter keyword related to your search
-        </small>
+        <div class="col-12 d-flex justify-content-center align-items-center" style="height: 10vh;">
+            <%= form.submit "Create" , class: "btn btn-primary  d-flex justify-content-center align-items-center" %>
         </div>
-      </div>
-      <div class="col-12 d-flex justify-content-center align-items-center" style="height: 10vh;">
-        <%= form.submit "Create" , class: "btn btn-dark  d-flex justify-content-center align-items-center" %>
-      </div>
-  </div>
-<% end %>
+    </div>
+    <% end %>
 
-  
+</div>
 
-<div id="alerts">
-    <h3>Alerts</h3><br>
-    <table class="table">
+<br><br>
+<h2 class="form-title">Alerts</h2>
+<br><p>Create alerts and receive notifications to your email</p>
+<hr/><br>
+
+<div class="border rounded">
+    <table class="table" style="margin-top: 10px; max-width: 98%; margin:auto;">
         <thead>
             <tr>
             <th scope="col">Keyword</th>
             <th scope="col">Frequency</th>
             <th scope="col">Crated at</th>
-            <th scope="col"></th>
+            <th scope="col">
+                <button class="btn btn-primary btn-sm" type="button" onclick="openForm()">
+                    <i class="fa fa-plus-circle" style="color:white;"></i>&nbspCreate
+                </button>
+            </th>
             </tr>
         </thead>
         <tbody>
@@ -49,13 +66,37 @@
                 <tr>
                 <td><%= alert.keyword   %></td>
                 <td><%= alert.frequency  %></td>
-                <td><%= alert.created_at %></td>
+                <td><%= time_ago_in_words alert.created_at %></td>
                 <td>
-                    <%= button_to "Delete", alert , method: :delete,  data: {turbo_method: :delete, turbo_confirm: "Are you sure?" } , class: "btn btn-danger btn-sm ms-2"%>
+                    <%= button_to "Delete", alert , method: :delete,  data: {turbo_method: :delete, turbo_confirm: "Are you sure?" } , class: "btn btn-link btn-sm "%>
                 </td>
             <% end %>
             </tr>
         </tbody>
     </table>
-
 </div>
+<br>
+
+
+<style>
+/* The popup form - hidden by default */
+.form-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    z-index: 9;
+}
+</style>
+
+<script>
+function openForm() {
+    document.getElementById("newAlertForm").style.display = "block";
+}
+
+function closeForm() {
+    document.getElementById("newAlertForm").style.display = "none";
+}
+ </script>

@@ -17,19 +17,19 @@ module JobsHelper
             content_tag(:div, class: "info-container") do
               concat(content_tag(:div, class: "info-item-card") do
                 concat tag.i(class: "fa fa-map-marker")
-                concat content_tag(:span, "." + job.location)
+                concat content_tag(:span, job.location, style: "margin-left:5px;")
               end)
               concat(content_tag(:div, class: "info-item-card") do
                 concat tag.i(class: "fa fa-clock-o", 'aria-hidden': true)
-                concat(content_tag(:span, "." + job.modality ))
+                concat(content_tag(:span, job.modality.humanize, style: "margin-left:5px;"))
               end)
               concat(content_tag(:div, class: "info-item-card") do
                 concat tag.i(class: "fa fa-wifi", 'aria-hidden': true)
-                concat(content_tag(:span, "." + job.location_mode))
+                concat(content_tag(:span, job.location_mode.humanize, style: "margin-left:5px;"))
               end)
             end +
             content_tag(:span, class: 'card-text', style: 'float: right;') do
-              content_tag(:small, "$#{job.min_salary ? job.min_salary : "------"}", class: 'text-body-secondary')
+              content_tag(:small, job.min_salary ? "$#{job.min_salary}" : "")
             end
           end
         end
