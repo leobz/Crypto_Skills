@@ -1,58 +1,33 @@
-<section class="vh-100">
-  <div class="container py-5 h-100">
-    <div class="row d-flex align-items-center justify-content-center h-100">
-      <div class="col-md-8 col-lg-7 col-xl-6">
-        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
-          class="img-fluid" alt="Phone image">
-      </div>
-      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <h2>Log in</h2>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "my-form") do |f| %>
+  <h2>Log in</h2>
 
-          <div class="field">
-            <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-          </div>
-
-          <div class="field">
-            <%= f.label :password %><br />
-            <%= f.password_field :password, autocomplete: "current-password" %>
-          </div>
-
-          <% if devise_mapping.rememberable? %>
-            <div class="field">
-              <div class="row">
-                <div class="col-2">
-                  <%= f.check_box :remember_me %>
-                </div>
-                <div class="col-10", style="margin-left:-25px; margin-top: 2px; font-size: 12px;">
-                  <%= f.label :remember_me %>
-                </div>
-              </div>
-            </div>
-          <% end %>
-
-          <br>
-          <div class="actions">
-            <%= f.submit "Log in", class: "btn btn-warning active" %>
-          </div>
-
-          <br>
-          <div class="shared-links">
-            <%= render "devise/shared/links" %>
-          </div>
-        <% end %>
-      </div>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
-  </div>
-</section>
 
-<style>
-.divider:after,
-.divider:before {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: #eee;
-}
-</style>
+    <div class="field">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "current-password" %>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="field">
+        <div class="row" style="margin-top: 10px;">
+          <div class="col-2">
+            <%= f.check_box :remember_me %>
+          </div>
+          <div class="col-10", style="margin-left:-20px; margin-top: 2px; font-size: 10px;">
+            <%= f.label :remember_me %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <br>
+    <div class="actions">
+      <%= f.submit "Log in", class: "btn btn-warning active" %>
+    </div>
+
+    <%= render "devise/shared/links" %>
+  <% end %>

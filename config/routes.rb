@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  devise_for :candidates, controllers: { sessions: 'candidates/sessions', registrations: 'candidates/registrations' }
+  devise_for :candidates, controllers: {
+    sessions: 'candidates/sessions',
+    registrations: 'candidates/registrations',
+    confirmations: 'candidates/confirmations',
+    passwords: 'candidates/passwords'
+  }
 
   root :to => "jobs#index"
 

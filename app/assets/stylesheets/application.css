@@ -355,9 +355,23 @@ body {
   border: 0;
   margin: 0 0 15px;
   padding: 15px;
+  height: 20px;
   box-sizing: border-box;
-  font-size: 14px;
+  font-size: 12px;
 }
+
+.new_candidate label {
+  font-size: 12px;
+}
+.new_candidate em{
+  font-size: 12px;
+}
+
+.new_candidate .btn.btn-warning{
+  font-size: 14px;
+  height: auto;
+}
+
 
 .shared-links{
   font-size: 14px;
