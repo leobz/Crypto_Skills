@@ -22,19 +22,19 @@
               </div>
               <div class="form-check form-switch" style="margin-top: 10px;">
                 <input class="form-check-input" type="checkbox" role="switch" id="remote_only" name="remote_only">
-                <label class="form-check-label" for="remote_only">Remote Only</label>
+                <label class="form-check-label" for="remote_only" style="font-size: 14px">Remote Only</label>
               </div>
 
               <!---------------------------------------------------- Category -------------------------------------------------->
               <div class="jobs_filters_filter" id="jobs_filters_categories">
                 <label style="font-size: 14px; font-weight:700;">Category</label>
-                <div><%= form.select :category, Job.categories.map {|key,_| [key.humanize, key] }, { include_blank: ""} %></div>
+                <div><%= form.select :category, Job.categories.map {|key,_| [key.humanize, key] }, { include_blank: ""}, style: "font-size: 14px" %></div>
               </div>
 
               <!---------------------------------------------------- Job Type -------------------------------------------------->
               <div class="jobs_filters_filter" id="jobs_filters_types">
                 <label style="font-size: 14px; font-weight:700;">Job Type</label>
-                <div><%= form.select :modality, Job.modalities.map {|key,_| [key.humanize, key] }, { include_blank: ""} %></div>
+                <div><%= form.select :modality, Job.modalities.map {|key,_| [key.humanize, key] }, { include_blank: ""}, style: "font-size: 14px"  %></div>
               </div>
 
               <!---------------------------------------------------- Filter buttom -------------------------------------------------->

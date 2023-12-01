@@ -20,6 +20,10 @@ body {
   overflow-x: hidden;
   background-color: #FFFFFF;
   font-family: Inter, Helvetica, Arial  sans-serif !important;
+
+  zoom: 1.1;
+  -moz-transform: scale(1.1);
+  -moz-transform-origin: 0 0;
 }
 
 .navbar-search{
