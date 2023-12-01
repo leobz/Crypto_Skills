@@ -72,9 +72,19 @@
       </div>
     </nav>
 
+    <!--------------------------------------------- Flash messages ----------------------------------------------->
+    <% flash.each do |key, value| %>
+        <div class="alert <%= flash_class(key) %> alert-dismissible fade show">
+          <strong>  <%= value %> </strong>
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    <% end %>
+
+    <!--------------------------------------------- Yield body ----------------------------------------------->
+
     <div class="row justify-content-center">
       <div class="col-xxl-7 col-xl-9 col-lg-10 col-md-11 col-sm-12">
-        <%= yield %>
+         <%= content_for?(:session) ? yield(:session) : yield %>
       </div>
     </div>
   </body>

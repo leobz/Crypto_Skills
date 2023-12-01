@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+
+  <body>
+    <div class="container">
+      <img class="ax-center my-10 w-24" src="https://assets.bootstrapemail.com/logos/light/square.png" />
+
+    <div class="card p-6 p-lg-10 space-y-4">
+        <p>Welcome <%= @email %>!</p>
+        <p>You can confirm your account email through the link below:</p>
+
+        <a class="btn btn-primary p-3 fw-700" href=<%= confirmation_url(@resource, confirmation_token: @token) %>>Confirm my account</a>
+    </div><br>
+
+      <img class="ax-center mt-10 w-40" src="https://assets.bootstrapemail.com/logos/light/text.png" />
+      <div class="text-muted text-center my-6">
+          Sent with <3 from Bitcoin Jobs. <br>
+          Bitcoin Jobs. 1 Hip Street<br>
+          Gnarly State, 01234 USA <br>
+      </div>
+    </div>
+  </body>
+</html>
