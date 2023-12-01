@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  devise_for :candidates
+  devise_for :candidates, controllers: { sessions: 'candidates/sessions', registrations: 'candidates/registrations' }
+
   root :to => "jobs#index"
 
   get "admin/log_out" => "admin_sessions#destroy", :as => "log_out"
