@@ -54,6 +54,8 @@ services:
     depends_on:
       - job_board_db
       - job_board_redis
+    volumes:
+      - ./storage/:/myapp/storage/
 
 volumes:
   db-data:
