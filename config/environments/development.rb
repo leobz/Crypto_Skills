@@ -71,7 +71,10 @@ Rails.application.configure do
 
   ################################### Mail Settings ######################################
   # Devise mailer config
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = {
+    host: ENV['MY_HOST'] || 'localhost',
+    port: ENV['MY_HOST'] ? 80 : 3000
+  }
   config.action_mailer.perform_caching = false
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true

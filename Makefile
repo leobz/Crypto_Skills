@@ -46,3 +46,15 @@ pull-images: # Pull images from registry
 .PHONY: cp
 cp: # Usage: make cp dir=<file_path> | Copy files from host to Rails container
 	docker cp $(dir) job_board-job_board-1:/myapp/$(dir)
+
+.PHONY: prod-console
+prod-console: # Opens rails console in production container
+	docker exec -it job_board-job_board-1 rails console
+
+.PHONY: prod-bash
+prod-bash: # Opens bash in production container
+	docker exec -it job_board-job_board-1 /bin/bash
+
+.PHONY: log-app
+log-app: # Log ruby app container
+	docker logs job_board-job_board-1 -f

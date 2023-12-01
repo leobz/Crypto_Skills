@@ -1,6 +1,8 @@
 .git
 .gitignore
 config/local_env.yml
+.certbot/
+.db-data/
 
 # Created by https://www.gitignore.io/api/git,ruby,rails,jetbrains+all
 # Edit at https://www.gitignore.io/?templates=git,ruby,rails,jetbrains+all

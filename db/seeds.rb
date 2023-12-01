@@ -313,7 +313,7 @@ j.save
 
 
 # Seed 1 - Categoría: ART
-Job.create(
+j = Job.create(
   title: "Graphic Designer",
   description: "Graphic designer position for creative projects.",
   website: "https://example.com/graphic-designer",
@@ -331,7 +331,7 @@ JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_log
 j.save
 
 # Seed 2 - Categoría: COMPUTER_SCIENCE
-Job.create(
+j = Job.create(
   title: "Software Engineer",
   description: "Software engineer position for coding projects.",
   website: "https://example.com/software-engineer",
@@ -349,7 +349,7 @@ JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_log
 j.save
 
 # Seed 3 - Categoría: ENGLISH_STUDIES
-Job.create(
+j = Job.create(
   title: "English Language Instructor",
   description: "English language instructor needed for teaching.",
   website: "https://example.com/english-instructor",
@@ -367,7 +367,7 @@ JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_log
 j.save
 
 # Seed 4 - Categoría: FINANCE
-Job.create(
+j = Job.create(
   title: "Financial Advisor",
   description: "Financial advisor position for financial planning.",
   website: "https://example.com/financial-advisor",
@@ -385,7 +385,7 @@ JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_log
 j.save
 
 # Seed 5 - Categoría: INFORMATION_SYSTEMS
-Job.create(
+j = Job.create(
   title: "Database Administrator",
   description: "Database administrator position for managing databases.",
   website: "https://example.com/database-administrator",
@@ -403,7 +403,7 @@ JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_log
 j.save
 
 # Seed 6 - Categoría: ACCOUNTING
-Job.create(
+j = Job.create(
   title: "Accountant",
   description: "Accountant position available for financial accounting.",
   website: "https://example.com/accountant",
@@ -421,7 +421,7 @@ JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_log
 j.save
 
 # Seed 7 - Categoría: BUSINESS
-Job.create(
+j = Job.create(
   title: "Business Analyst",
   description: "Business analyst job opportunity for analysis.",
   website: "https://example.com/business-analyst",
@@ -439,7 +439,7 @@ JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_log
 j.save
 
 # Seed 8 - Categoría: BUSINESS_ADMINISTRATION
-Job.create(
+j = Job.create(
   title: "Administrative Assistant",
   description: "Administrative assistant position for office tasks.",
   website: "https://example.com/administrative-assistant",
@@ -457,7 +457,7 @@ JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_log
 j.save
 
 # Seed 9 - Categoría: EDUCATION
-Job.create(
+j = Job.create(
   title: "Math Teacher",
   description: "Math teacher needed for teaching mathematics.",
   website: "https://example.com/math-teacher",
@@ -475,7 +475,7 @@ JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_log
 j.save
 
 # Seed 10 - Categoría: MATHEMATICS
-Job.create(
+j = Job.create(
   title: "Mathematician",
   description: "Mathematician position for mathematical research.",
   website: "https://example.com/mathematician",
@@ -493,7 +493,7 @@ JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_log
 j.save
 
 # Seed 11 - Categoría: PHYSICS
-Job.create(
+j = Job.create(
   title: "Physicist",
   description: "Physicist position for physics research.",
   website: "https://example.com/physicist",
@@ -511,7 +511,7 @@ JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_log
 j.save
 
 # Seed 12 - Categoría: SCIENCE
-Job.create(
+j = Job.create(
   title: "Lab Technician",
   description: "Lab technician position for scientific experiments.",
   website: "https://example.com/lab-technician",
@@ -529,7 +529,7 @@ JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_log
 j.save
 
 # Seed 13 - Categoría: STATISTICS_AND_DECISION_THEORY
-Job.create(
+j = Job.create(
   title: "Statistician",
   description: "Statistician position for statistical analysis.",
   website: "https://example.com/statistician",
@@ -539,7 +539,7 @@ Job.create(
   modality: "FULL_TIME",
   location: "Hybrid",
   location_mode: "HYBRID",
-  category: "STATISTICS_AND_DECISION_THEORY",
+  category: "STATISTICS",
   created_at: Time.now,
   published: true
 )
@@ -547,7 +547,7 @@ JobsHelper.attach_company_logo(j, Rails.root.join("app/assets/images/company_log
 j.save
 
 # Seed 14 - Categoría: LAW
-Job.create(
+j = Job.create(
   title: "Legal Counsel",
   description: "Legal counsel position for legal matters.",
   website: "https://example.com/legal-counsel",

@@ -31,19 +31,29 @@ services:
     ports:
       - '5432:5432'
 
+  job_board_redis:
+    image: redis:alpine3.18
+    restart: always
+    ports:
+      - '6379:6379'
+
   job_board:
     image: leobz/job_board:latest
     environment:
       - DB_HOST=job_board_db
+      - REDIS_URL=redis://job_board_redis:6379/0
       - MY_HOST=${MY_HOST}
       - API_KEY=${API_KEY}
       - OPEN_NODE_URL=${OPEN_NODE_URL}
       - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - MAIL_USERNAME=${MAIL_USERNAME}
+      - MAIL_PASSWORD=${MAIL_PASSWORD}
       - PORT=3000
     ports:
       - '3000:3000'
     depends_on:
       - job_board_db
+      - job_board_redis
 
 volumes:
   db-data:
