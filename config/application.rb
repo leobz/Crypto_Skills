@@ -20,9 +20,10 @@ module JobBoard
     config.load_defaults 7.0
 
     # Host
-    config.hosts << "www.example.com"
-    config.hosts << ENV['MY_HOST'] || "bitcoinnews.com.ar"
-    config.x.app.my_host = ENV['MY_HOST'] || "bitcoinnews.com.ar"
+    config.hosts << "localhost"
+    config.hosts << "frontend"
+    config.hosts << ENV['MY_HOST'] || "crypto-skills.com"
+    config.x.app.my_host = ENV['MY_HOST'] || "crypto-skills.com"
 
     # OpenNode
     config.x.opennode.opennode_url = ENV['OPEN_NODE_URL']
@@ -38,5 +39,29 @@ module JobBoard
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+
+    ################################### Mail Settings ######################################
+    # Devise mailer config
+    config.action_mailer.default_url_options = {
+      host: ENV['MY_HOST'] || 'localhost',
+      port: ENV['MY_HOST'] ? 80 : 3000
+    }
+    config.action_mailer.perform_caching = false
+    config.action_mailer.perform_deliveries = true
+    config.action_mailer.raise_delivery_errors = true
+    config.action_mailer.default_options = { from: 'no-reply@example.com' }
+
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      address:         'smtp.gmail.com',
+      port:            587,
+      domain:          'example.com',
+      user_name:       ENV['MAIL_USERNAME'],
+      password:        ENV['MAIL_PASSWORD'],
+      authentication:  'plain',
+      enable_starttls: true,
+      open_timeout:    5,
+      read_timeout:    5 }
   end
 end

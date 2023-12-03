@@ -20,6 +20,11 @@ build: # Build docker image.
 prod: # Run app and db in containers
 	$(call DOCKER_COMPOSE, up -d)
 
+.PHONY: prod-test
+prod-test: #Run app local in prod mode and db in container
+	$(call DOCKER_COMPOSE, -f docker-compose-dev.yml up -d)
+	sh start_app_prod.sh
+
 .PHONY: dev
 dev: #Run app local and db in container
 	$(call DOCKER_COMPOSE, -f docker-compose-dev.yml up -d)
@@ -49,7 +54,7 @@ cp: # Usage: make cp dir=<file_path> | Copy files from host to Rails container
 
 .PHONY: prod-console
 prod-console: # Opens rails console in production container
-	docker exec -it job_board-job_board-1 rails console
+	docker exec -it job_board-job_board-1 rails console -e production
 
 .PHONY: prod-bash
 prod-bash: # Opens bash in production container
@@ -58,3 +63,7 @@ prod-bash: # Opens bash in production container
 .PHONY: log-app
 log-app: # Log ruby app container
 	docker logs job_board-job_board-1 -f
+
+.PHONY: log-nginx
+log-nginx: # Log nginx container
+	docker logs job_board-nginx-1 -f

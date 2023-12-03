@@ -23,7 +23,7 @@ class JobsController < ApplicationController
 
     @jobs = @jobs.where("title ILIKE ? OR company ILIKE ?", "%#{params[:keyword]}%", "%#{params[:keyword]}%")
     @jobs = @jobs.where("location ILIKE ?", "%#{params[:location]}%")
-    @jobs = @jobs.order("created_at DESC")
+    @jobs = @jobs.order("updated_at DESC")
 
     @jobs
   end
