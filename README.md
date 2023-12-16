@@ -63,6 +63,11 @@ MY_HOST: "deploy_domain_who_is_going_to_be_requested_by_the_open_node_webhook"
 # Mail config
 MAIL_USERNAME: "your_email"
 MAIL_PASSWORD: "your_email_password"
+
+
+#********************  Prod only  ************************#
+POSTGRES_USER: "some_user"
+POSTGRES_PASSWORD: "some_password"
 ```
 
 You can obtain an API key by signing up for an account on OpenNode. See [open node documentation](https://developers.opennode.com/docs/creating-a-charge)
@@ -95,7 +100,14 @@ make stop # Terminates the execution of all containers
 
 ### Run App in Production
 
-1. Download latest tagged image from Docker registry:
+1. Create master
+
+```bash
+EDITOR="vim" rails credentials:edit
+```
+
+
+1.5 Download latest tagged image from Docker registry:
 
 ```bash
 # TODO make pull-images

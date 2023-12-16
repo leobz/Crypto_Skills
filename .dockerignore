@@ -1,8 +1,25 @@
+#**************************************    Custom files   *************************************
+# ******* Hidden files
 .git
+.github
+.gitattributes
 .gitignore
+
+# ******* Folders
+certbot/
+nginx/
+db-data/
+
+# ******* Files
 config/local_env.yml
-.certbot/
-.db-data/
+Dockerfile
+Makefile
+start_app.sh
+docker-compose*
+
+
+
+#**************************************    Default files   *************************************
 
 # Created by https://www.gitignore.io/api/git,ruby,rails,jetbrains+all
 # Edit at https://www.gitignore.io/?templates=git,ruby,rails,jetbrains+all
@@ -128,7 +145,6 @@ pickle-email-*.html
 
 # TODO Comment out this rule if you are OK with secrets being uploaded to the repo
 config/initializers/secret_token.rb
-config/master.key
 
 # Only include if you have production secrets in this file, which is no longer a Rails default
 # config/secrets.yml

@@ -11,7 +11,10 @@ services:
     volumes:
       - ./nginx/conf/:/etc/nginx/conf.d/:ro
       - ./certbot/www:/var/www/certbot/:ro
-      - ./certbot/conf/:/etc/nginx/ssl/:ro
+      - ./certbot/conf/:/etc/letsencrypt/:ro
+      - apivol:/var/www/statics
+    command: [nginx-debug, '-g', 'daemon off;']
+
 
   certbot:
     image: certbot/certbot:latest
@@ -25,11 +28,12 @@ services:
     volumes:
       - ./db-data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=job_board
+      - POSTGRES_DB=job_board_prod
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     ports:
       - '5432:5432'
+
 
   job_board_redis:
     image: redis:alpine3.18
@@ -37,10 +41,13 @@ services:
     ports:
       - '6379:6379'
 
+
   job_board:
     image: leobz/job_board:latest
     environment:
       - DB_HOST=job_board_db
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - REDIS_URL=redis://job_board_redis:6379/0
       - MY_HOST=${MY_HOST}
       - API_KEY=${API_KEY}
@@ -49,14 +56,15 @@ services:
       - MAIL_USERNAME=${MAIL_USERNAME}
       - MAIL_PASSWORD=${MAIL_PASSWORD}
       - PORT=3000
-    ports:
-      - '3000:3000'
     depends_on:
       - job_board_db
       - job_board_redis
     volumes:
       - ./storage/:/myapp/storage/
+      - apivol:/myapp/public
+
 
 volumes:
+  apivol: {}
   db-data:
     driver: local

@@ -10,4 +10,4 @@ COPY . .
 EXPOSE 3000
 
 # Configure the main process to run when running the image
-CMD ["sh", "start_app.sh"]
+CMD ["sh", "start_app_prod.sh"]
