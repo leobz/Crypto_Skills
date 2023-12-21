@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>JobBoard</title>
+    <title>The Crypto Job Board</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.niceboard.co/boards/bitcoinerjobs/assets/favicon-ek9Ftpz4W-32x32.png">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta charset="UTF-8">
     <%= csrf_meta_tags %>
@@ -29,48 +30,50 @@
     <% end %>
 
     <!--------------------------------- Navbar Search ----------------------------------->
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #222; height: 60px;">
-      <div class="container col-xxl-7 col-xl-9 col-lg-10 col-md-11 col-sm-12">
-        <a class="navbar-brand" href="/">
-          <img src="https://cdn.niceboard.co/boards/bitcoinerjobs/assets/logo-FMBd4sSIO.png" title="Bitcoiner Jobs" alt="Bitcoiner Jobs" style="max-width:60px;">
-        </a>
-        <div class="collapse navbar-collapse justify-content-center">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="/">Find Jobs <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" target="_blank" href="https://bitcoinnews.com/" >Bitcoiner News</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" target="_blank" href="https://www.bitcoinerevents.com/" >Bitcoiner Events</a>
-            </li>
-          </ul>
-        </div>
 
-        <div class="dropdown" style="margin-right: 10px">
-          <button class="btn btn-outline-light" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fa fa-user" style="color:white;"></i>&nbspCandidate
-          </button>
-          <ul class="dropdown-menu">
-            <% if candidate_signed_in? %>
-              <li><a class="dropdown-item" href="<%=candidates_profile_path%>">Profile</a></li>
-              <li><%= button_to 'Sign out', destroy_candidate_session_path, method: :delete, class:"dropdown-item" %></li>
-            <% else %>
-              <li><a class="dropdown-item" href="<%=new_candidate_session_path%>">Log in</a></li>
-              <li><a class="dropdown-item" href="<%=new_candidate_registration_path%>">Sign up</a></li>
-            <% end %>
-          </ul>
-        </div>
-
-        <div class="ms-auto">
-          <a href="<%=new_job_path%>" class="btn btn-outline-light">
-            <i class="fa fa-plus-circle"  style="color:white;"></i>
-            Post Job
-          </a>
-        </div>
+  <nav class="navbar navbar-expand-lg" data-bs-theme="dark" id="main-navbar" >
+    <div class="container col-xxl-7 col-xl-9 col-lg-10 col-md-11 col-sm-12">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="/">
+        <img src="https://cdn.niceboard.co/boards/bitcoinerjobs/assets/logo-FMBd4sSIO.png" title="Bitcoiner Jobs" alt="Bitcoiner Jobs" style="height: 60px;">
+      </a>
+      <div class="collapse navbar-collapse" id="navbarScroll">
+        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px; margin: auto;">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/">Find Jobs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" target="_blank" href="https://bitcoinnews.com/" >Bitcoiner News</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" target="_blank" href="https://www.bitcoinerevents.com/" >Bitcoiner Events</a>
+          </li>
+        </ul>
       </div>
-    </nav>
+
+      <nav class="navbar">
+      <button class="btn btn-outline-light" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin-right: 10px">
+        <i class="fa fa-user" style="color:white;"></i>
+      </button>
+      <ul class="dropdown-menu">
+        <% if candidate_signed_in? %>
+          <li><a class="dropdown-item" href="<%=candidates_profile_path%>">Profile</a></li>
+          <li><%= button_to 'Sign out', destroy_candidate_session_path, method: :delete, class:"dropdown-item" %></li>
+        <% else %>
+          <li><a class="dropdown-item" href="<%=new_candidate_session_path%>">Log in</a></li>
+          <li><a class="dropdown-item" href="<%=new_candidate_registration_path%>">Sign up</a></li>
+        <% end %>
+      </ul>
+      </nav>
+
+      <a href="<%=new_job_path%>" class="btn btn-outline-light">
+          <i class="fa fa-plus-circle"  style="color:white;"></i>&nbsp Post a Job
+      </a>
+    </div>
+  </nav>
+
 
     <!--------------------------------------------- Flash messages ----------------------------------------------->
     <% flash.each do |key, value| %>
